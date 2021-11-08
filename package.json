@@ -1,0 +1,19 @@
+{
+  "name": "pawprint",
+  "version": "1.0.0",
+  "description": "CS35L project",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arcanemagic/pawprint.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arcanemagic/pawprint/issues"
+  },
+  "homepage": "https://github.com/arcanemagic/pawprint#readme"
+}
