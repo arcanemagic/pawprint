@@ -24,17 +24,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
     <meta name="theme-color" content="#2a2b2f" />
-    <script type="application/javascript">
-      function getimage() {
-        let number = localStorage.getItem("number");
-        let num = number.toString();
-        let imageName = "images/Maps/UCLAMAP" + num + ".png";
-        console.log(num);
-        console.log(imageName);
 
-        return imageName;
-      }
-    </script>
     <!-- FAVICONS -->
     <link rel="shortcut icon" href="images/favicon/favicon.png" />
     <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
@@ -259,10 +249,10 @@
                 >
                   <!-- MAIN IMAGE -->
 
-                  <script src="./update.js"></script>
+                  <script src="./index.js"></script>
                   <img
-                    src="./images/Maps/UCLAMAP1.png"
-                    id="pic"
+                    src=""
+                    id="mappic"
                     alt=""
                     data-bgposition="center center"
                     data-bgfit="cover"
@@ -271,6 +261,10 @@
                     class="rev-slidebg"
                     data-no-retina
                   />
+                  <script>
+                    const img = document.getElementById("mappic");
+                    img.src = getimage();
+                  </script>
                   <!-- LAYERS -->
 
                   <!-- LAYER NR. 1 -->
