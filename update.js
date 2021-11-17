@@ -24,14 +24,35 @@ let urlArr = [
   "https://www.google.com/maps/place/34%C2%B004'15.8%22N+118%C2%B026'33.4%22W/@34.071048,-118.4431572,132m/data=!3m2!1e3!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d34.0710476!4d-118.4426103",
   "https://www.google.com/maps/place/34%C2%B004'16.4%22N+118%C2%B026'30.4%22W/@34.071208,-118.4423262,132m/data=!3m2!1e3!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d34.071208!4d-118.4417785",
 ];
+
+let locArr = [
+  "Kaufman Hall",
+  "Kaufman Hall",
+  "Kaufman Hall",
+  "Kaufman Hall",
+  "Wallis Annenburg",
+  "Wilson Plaza",
+  "Student Activities Center",
+  "Student Activities Center",
+  "Janss Steps",
+  "Janss Steps",
+  "Royce Hall",
+  "Royce Hall",
+  "Royce Hall",
+  "Royce Hall",
+  "Powell Library",
+  "Powell Library",
+  "Powell Library",
+  "Powell Library",
+];
 console.log(currentLoc.number);
 
 function changemap(number) {
   currentLoc.number = number;
   localStorage.setItem("url", urlArr[number - 1]);
   localStorage.setItem("number", number);
+  localStorage.setItem("location", locArr[number - 1]);
   currentLoc.url = urlArr[number - 1];
-
   let num = number.toString();
   let imageName = "images/Maps/UCLAMAP" + num + ".png";
   console.log(imageName);

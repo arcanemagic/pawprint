@@ -13,3 +13,7 @@ function getimage() {
   console.log(imageName);
   return imageName;
 }
+
+function getLocation() {
+  return localStorage.getItem("location");
+}

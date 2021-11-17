@@ -118,11 +118,8 @@ img {
 i {
   cursor: pointer;
   color: #ff0000;
-  width: 100px;
-  height: 100px;
 }
 .material-icons {
-  font-size: 48px;
 }
 
 h1 {

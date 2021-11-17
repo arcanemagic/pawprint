@@ -178,14 +178,7 @@
                     <nav class="collapse collapsing navbar-collapse right-1024">
                       <ul class="nav navbar-nav">
                         <!-- MENU ITEM -->
-                        <li class="parent current">
-                          <a href="index.html"
-                            ><div class="main-menu-title">Home</div></a
-                          >
-                          <a href="./update.html"
-                            ><div class="main-menu-title">Posts</div></a
-                          >
-                        </li>
+                        <li class="parent current"></li>
                       </ul>
                     </nav>
                   </div>
@@ -294,9 +287,13 @@
                     data-y="['center','center','center','center']"
                     data-voffset="['0','0','0','0']"
                   >
-                    <span class="bold">The Powell Cat was Last Seen at</span>
+                    <span class="bold">The Powell Cat was Last Seen at:</span>
+                    <div class="bold" id="location"></div>
                   </div>
-
+                  <script>
+                    document.getElementById("location").innerText =
+                      localStorage.getItem("location");
+                  </script>
                   <!-- LAYER NR. 2 -->
                   <div
                     class="
@@ -331,17 +328,21 @@
             </div>
           </div>
           <!-- END REVOLUTION SLIDER -->
+          <!--added buttons-->
+          <div class="buttons" style="position: relative; left: 500px">
+            <button value="Take Me to Powell Cat"></button>
+            <input
+              type="button"
+              onClick="parent.open(getURL())"
+              value="Take Me to Powell Cat"
+            />
+            <input
+              type="button"
+              onClick="parent.open('./update.html')"
+              value="Update"
+            />
+          </div>
 
-          <input
-            type="button"
-            onClick="parent.open(getURL())"
-            value="Take Me to Powell Cat"
-          />
-          <input
-            type="button"
-            onClick="parent.open('./update.html')"
-            value="Update"
-          />
           <!-- SCROLL ICON -->
           <div class="local-scroll-cont font-white">
             <a href="#about" class="scroll-down smooth-scroll">
