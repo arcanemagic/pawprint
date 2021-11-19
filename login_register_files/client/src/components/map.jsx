@@ -96,7 +96,9 @@ class Map extends React.Component {
           src={imagesPath[imageNum - 1]}
           alt="image"
         />
-        <a href={urlArr[imageNum - 1]}>Take me to Powell Cat</a>
+        <a href={urlArr[imageNum - 1]} target="_blank">
+          Take me to Powell Cat
+        </a>
       </div>
     );
   }
