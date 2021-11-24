@@ -6,112 +6,113 @@ img {
   cursor: pointer; /* Mouse pointer on hover */
 }
 
-.container {
+.update {
   position: relative;
   width: 70%;
   text-align: center;
+  background-color: white;
 }
 
-.container img {
+.update img {
   width: 100%;
   height: auto;
 }
 
-.container .one {
+.update .one {
   position: absolute;
   top: 18%;
   left: 42%;
 }
 
-.container .two {
+.update .two {
   position: absolute;
   top: 13%;
   left: 56%;
 }
 
-.container .three {
+.update .three {
   position: absolute;
   top: 30%;
   left: 45%;
 }
 
-.container .four {
+.update .four {
   position: absolute;
   top: 25%;
   left: 58%;
 }
-.container .five {
+.update .five {
   position: absolute;
   top: 37%;
   left: 42%;
 }
-.container .six {
+.update .six {
   position: absolute;
   top: 34%;
   left: 53%;
 }
-.container .seven {
+.update .seven {
   position: absolute;
   top: 41%;
   left: 47%;
 }
-.container .eight {
+.update .eight {
   position: absolute;
   top: 38%;
   left: 63%;
 }
-.container .nine {
+.update .nine {
   position: absolute;
   top: 28%;
   left: 68%;
 }
-.container .ten {
+.update .ten {
   position: absolute;
   top: 40%;
   left: 70%;
 }
-.container .eleven {
+.update .eleven {
   position: absolute;
   top: 10%;
   left: 69%;
 }
-.container .twelve {
+.update .twelve {
   position: absolute;
   top: 6%;
   left: 86%;
 }
-.container .thirteen {
+.update .thirteen {
   position: absolute;
   top: 20%;
   left: 72%;
 }
-.container .fourteen {
+.update .fourteen {
   position: absolute;
   top: 17%;
   left: 89%;
 }
-.container .fifteen {
+.update .fifteen {
   position: absolute;
   top: 30%;
   left: 76%;
 }
-.container .sixteen {
+.update .sixteen {
   position: absolute;
   top: 25%;
   left: 94%;
 }
-.container .seventeen {
+.update .seventeen {
   position: absolute;
   top: 45%;
   left: 80%;
 }
-.container .eighteen {
+.update .eighteen {
   position: absolute;
   top: 42%;
   left: 98%;
 }
 
-.container .material-icons:hover {
+.update .material-icons:hover {
   color: black;
 }
 
@@ -124,4 +125,5 @@ i {
 
 h1 {
   position: absolute;
+  padding: 10px;
 }
