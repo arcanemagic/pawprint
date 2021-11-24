@@ -4,13 +4,13 @@
   justify-content: center;
 }
 
-.information{
+.information {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.information input{
+.information input {
   width: 200px;
   height: 30px;
   font-size: 20px;
@@ -19,16 +19,16 @@
   margin-bottom: 10px;
 }
 
-.information button{
+.information button {
   width: 100px;
   height: 40px;
   margin-top: 50px;
 }
 
-.information button:hover{
-cursor: pointer;
+.information button:hover {
+  cursor: pointer;
 }
 
-.register{
+.register {
   margin-bottom: 20px;
 }

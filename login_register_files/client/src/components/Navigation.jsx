@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../images/Logo.png";
+import logo from "../images/pawprint_logo.png";
 function Navigation() {
   return (
     <div className="navigation">
@@ -20,6 +20,11 @@ function Navigation() {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/update">
                   Update
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/social">
+                  Posts
                 </NavLink>
               </li>
               <li className="nav-item">

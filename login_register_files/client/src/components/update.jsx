@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import map from "../images/UCLAMAP.png";
-import "./update.css";
+import map from "../images/maps/UCLAMAP.png";
+import "../css/update.css";
 class Update extends React.Component {
   changeMap(num) {
     //send data to backend

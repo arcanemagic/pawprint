@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import Login from "./Login";
+import App from "./components/App";
+import Login from "./components/Login";
 import "./index.css";
-import Button from "./components/button";
+import Social from "./components/Social";
 import Map from "./components/map";
 import Update from "./components/update";
 import reportWebVitals from "./reportWebVitals";
@@ -16,6 +16,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Map />} />
       <Route path="/update" element={<Update />} />
+      <Route path="/social" element={<Social />} />
       <Route path="/register" element={<App />} />
       <Route path="/login" element={<Login />} />
     </Routes>

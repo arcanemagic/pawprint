@@ -1,0 +1,47 @@
+.user_post {
+  border: 1px solid lightgray;
+  max-width: 500px;
+  background-color: white;
+  margin-bottom: 30px;
+}
+.username_header {
+  object-fit: contain;
+  font-size: 130%;
+  font-family: "Patrick Hand SC", cursive;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.username_logo {
+  width: 50px;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+
+.post_image {
+  width: 500px;
+}
+
+.user_caption {
+  font-family: "Patrick Hand SC", cursive;
+  padding-bottom: 5px;
+  padding-top: 2px;
+  padding-left: 5px;
+}
+
+.icons {
+  display: inline-block;
+}
+
+.icon {
+  display: inline;
+  width: 50px;
+  padding-left: 2px;
+}
+
+.likes {
+  padding-left: 4px;
+}
