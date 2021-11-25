@@ -9,6 +9,7 @@ import Update from "./components/update";
 import reportWebVitals from "./reportWebVitals";
 import Navigation from "./components/Navigation";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ImgUpload from "./components/ImgUpload";
 
 ReactDOM.render(
   <Router>
@@ -19,6 +20,7 @@ ReactDOM.render(
       <Route path="/social" element={<Social />} />
       <Route path="/register" element={<App />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/create" element={<ImgUpload />} />
     </Routes>
   </Router>,
   document.getElementById("root")

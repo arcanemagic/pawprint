@@ -41,26 +41,16 @@ function Post(props) {
   return (
     <div className="user_post">
       <div className="username_header">
-        <img
-          className="username_logo"
-          src={username_logo}
-          alt="Username logo"
-        />
         <strong>{props.username}</strong>
       </div>
-      <img
-        className="post_image"
-        src={props.image}
-        alt={props.tag}
-        onClick={incrementLikeCount}
-      />
-      <div className="icons">
+      <img className="post_image" src={props.image} alt={props.tag} />
+      <div className="icons" onClick={incrementLikeCount}>
         {likeCount === 0 ? (
           <Icon symbol={nolikes} altName="nolikes icon" />
         ) : (
           <Icon symbol={likes} altName="likes icon" />
         )}
-        <Icon symbol={comment_symbol} alt="comment icon" />
+
         <div className="likes">{likeCount} likes</div>
       </div>
       <div className="user_caption">

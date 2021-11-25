@@ -1,129 +1,118 @@
-img {
-  border: none; /* Remove borders */
-  color: white; /* White text */
-  margin-left: 200px;
-  width: 1000px;
-  cursor: pointer; /* Mouse pointer on hover */
-}
-
 .update {
   position: relative;
-  width: 70%;
   text-align: center;
   background-color: white;
 }
 
-.update img {
+.mapicons {
+  position: relative;
+}
+.mapicons img {
   width: 100%;
-  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.update .one {
+.mapicons .one {
   position: absolute;
-  top: 18%;
-  left: 42%;
+  top: 23%;
+  left: 25%;
 }
 
-.update .two {
+.mapicons .two {
   position: absolute;
-  top: 13%;
-  left: 56%;
+  top: 22%;
+  left: 40%;
 }
 
-.update .three {
-  position: absolute;
-  top: 30%;
-  left: 45%;
-}
-
-.update .four {
-  position: absolute;
-  top: 25%;
-  left: 58%;
-}
-.update .five {
-  position: absolute;
-  top: 37%;
-  left: 42%;
-}
-.update .six {
-  position: absolute;
-  top: 34%;
-  left: 53%;
-}
-.update .seven {
-  position: absolute;
-  top: 41%;
-  left: 47%;
-}
-.update .eight {
-  position: absolute;
-  top: 38%;
-  left: 63%;
-}
-.update .nine {
-  position: absolute;
-  top: 28%;
-  left: 68%;
-}
-.update .ten {
+.mapicons .three {
   position: absolute;
   top: 40%;
-  left: 70%;
-}
-.update .eleven {
-  position: absolute;
-  top: 10%;
-  left: 69%;
-}
-.update .twelve {
-  position: absolute;
-  top: 6%;
-  left: 86%;
-}
-.update .thirteen {
-  position: absolute;
-  top: 20%;
-  left: 72%;
-}
-.update .fourteen {
-  position: absolute;
-  top: 17%;
-  left: 89%;
-}
-.update .fifteen {
-  position: absolute;
-  top: 30%;
-  left: 76%;
-}
-.update .sixteen {
-  position: absolute;
-  top: 25%;
-  left: 94%;
-}
-.update .seventeen {
-  position: absolute;
-  top: 45%;
-  left: 80%;
-}
-.update .eighteen {
-  position: absolute;
-  top: 42%;
-  left: 98%;
+  left: 25%;
 }
 
-.update .material-icons:hover {
+.mapicons .four {
+  position: absolute;
+  top: 39%;
+  left: 42%;
+}
+.mapicons .five {
+  position: absolute;
+  top: 54%;
+  left: 25%;
+}
+.mapicons .six {
+  position: absolute;
+  top: 50%;
+  left: 36%;
+}
+.mapicons .seven {
+  position: absolute;
+  top: 58%;
+  left: 30%;
+}
+.mapicons .eight {
+  position: absolute;
+  top: 55%;
+  left: 46%;
+}
+.mapicons .nine {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+}
+.mapicons .ten {
+  position: absolute;
+  top: 55%;
+  left: 55%;
+}
+.mapicons .eleven {
+  position: absolute;
+  top: 10%;
+  left: 53%;
+}
+.mapicons .twelve {
+  position: absolute;
+  top: 7%;
+  left: 70%;
+}
+.mapicons .thirteen {
+  position: absolute;
+  top: 25%;
+  left: 55%;
+}
+.mapicons .fourteen {
+  position: absolute;
+  top: 22%;
+  left: 72%;
+}
+.mapicons .fifteen {
+  position: absolute;
+  top: 42%;
+  left: 60%;
+}
+.mapicons .sixteen {
+  position: absolute;
+  top: 36%;
+  left: 77%;
+}
+.mapicons .seventeen {
+  position: absolute;
+  top: 60%;
+  left: 62%;
+}
+.mapicons .eighteen {
+  position: absolute;
+  top: 56%;
+  left: 82%;
+}
+
+.mapicons .material-mapicons:hover {
   color: black;
 }
 
 i {
   cursor: pointer;
   color: #ff0000;
-}
-.material-icons {
-}
-
-h1 {
-  position: absolute;
-  padding: 10px;
 }
