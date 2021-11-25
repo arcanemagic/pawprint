@@ -8,12 +8,33 @@ import { NavLink } from "react-router-dom";
 function Social() {
   return (
     <div className="App">
-      <Post
-        username="adithi.ramesh02"
-        caption="So Cute!!"
-        image={cat_img}
-        tag="cat"
-      />
+      <ul>
+        <li>
+          <Post
+            username="adithi.ramesh02"
+            caption="So Cute!!"
+            image={cat_img}
+            tag="cat"
+          />
+        </li>
+        <li>
+          <Post
+            username="adithi.ramesh02"
+            caption="So Cute!!"
+            image={cat_img}
+            tag="cat"
+          />
+        </li>
+      </ul>
+      <select name="pets" id="pet-select">
+        <option value="">--Please choose an option--</option>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="squirrel">Squirrel</option>
+        <option value="bird">Bird</option>
+        <option value="bunny">Bunny</option>
+        <option value="others">Others</option>
+      </select>
       <NavLink class="nav-link" to="/create">
         <button>Post</button>
       </NavLink>
