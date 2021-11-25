@@ -1,11 +1,11 @@
 .update {
-  position: relative;
   text-align: center;
   background-color: white;
 }
 
 .mapicons {
   position: relative;
+  display: inline-block;
 }
 .mapicons img {
   width: 100%;

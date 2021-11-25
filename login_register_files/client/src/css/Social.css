@@ -1,40 +1,20 @@
 .App {
   background-color: mintcream;
-}
-.pawprint_header {
-  object-fit: contain;
-  background-color: lemonchiffon;
-  font-size: xx-large;
-  font-family: "Patrick Hand SC", cursive;
-  vertical-align: middle;
   display: flex;
-  align-items: center;
-  border-bottom: 1px solid lightgray;
-  margin-bottom: 20px;
 }
 
-.pawprint_logo {
-  width: 100px;
+.App .select {
+  width: 10%;
+}
+li {
+  list-style-type: none;
 }
 
-.user_login {
-  text-align: center;
-  display: inline-block;
-  background-color: rgb(0, 110, 255);
-  width: 70px;
-  height: 50px;
-  font-size: 50%;
-  font-family: "Patrick Hand SC", cursive;
+select {
+  width: 20%;
 }
 
-.pawprint_trending {
+.postbutton {
   text-align: right;
-  display: inline-block;
-  background-color: lemonchiffon;
-  margin-left: 30%;
-  margin-right: 33%;
-  border: 1px solid lemonchiffon;
-  font-size: 70%;
-  font-family: "Patrick Hand SC", cursive;
-  color: royalblue;
+  margin: 10px;
 }

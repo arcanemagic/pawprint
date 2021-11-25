@@ -27,7 +27,7 @@ function Navigation() {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/social">
-                  Posts
+                  Animal Social Media
                 </NavLink>
               </li>
               <li className="nav-item">
