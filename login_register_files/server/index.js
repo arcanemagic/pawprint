@@ -1,8 +1,9 @@
 const express = require('express');
-const app = express();
-const mysql = require('mysql');
-const cors = require('cors');
 const { response } = require('express');
+const app = express();
+const cors = require('cors');
+const mysql = require('mysql');
+
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -26,7 +27,7 @@ app.use(session({
     resave:false,
     saveUninitialized:false,
     cookie:{
-         expires: 60*60*12, // exppire 12 hours
+         expires: 60*60*2, // exppire 2 hours
     },
  })
 );
@@ -35,6 +36,7 @@ const db = mysql.createConnection({
     user: "root",
     host: "localhost",
     password: "05231919",
+
     database: "userSys",
 });
 
@@ -96,6 +98,73 @@ app.post('/login',(req, res) => {
         }
     );
 });
+
+
+// for upload post 
+
+app.post("/uploadPost", (req,res) => {
+    const title = req.body.title;
+    const description = req.body.description
+    const image = req.body.image
+    const author = req.body.author
+
+    db.query(
+        "INSERT INTO posts (title, description, image, author) VALUE (?, ?, ?, ?);",
+        [title, description, image, author],
+        (err, results) => {
+            console.log(err);
+            res.send(result);
+        }
+    );
+});
+
+//also for posts to show up
+app.get("/??", (req, res) => {
+    db.query("SELECT * FROM posts", (err, results) => {
+      if (err) {
+        console.log(err);
+      }
+      res.send(results);
+    });
+  });
+
+app.get("/User/:username", (req, res) => {
+    const username = req.params.username;
+    db.query(
+      "SELECT * FROM posts WHERE author = ?;",
+      username,
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        }
+        res.send(results);
+      }
+    );
+  });
+
+  router.post("/like", (req, res) => {
+    const userLike = req.body.userLike;
+    const postid = req.body.postid;
+  
+    db.query(
+      "INSERT INTO Likes (userLike, postid) VALUES (?,?)",
+      [userLike, postid],
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        }
+        db.query(
+          "UPDATE Uploads SET likes = likes + 1 WHERE id = ?",
+          postId,
+          (err2, results2) => {
+            res.send(results);
+          }
+        );
+      }
+    );
+  });
+
+
 
 app.listen(3001, ()=>{
     console.log("Yey, your server is running in 3001")
