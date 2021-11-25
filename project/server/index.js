@@ -104,7 +104,7 @@ app.post('/login',(req, res) => {
 app.post('/updateBuilding', (req, res) => {
     db.query("SELECT * from picid", (err, res) => {
         if (err) throw (err);
-        var building = req.body.number;
+        const building = req.body.number;
         db.query("INSERT INTO picid(building) VALUES (?)",[building], (err, res) => {
             if (err) throw (err);
             console.log("updated");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import one from "../images/PowellCatLocation-1.jpg";
 import two from "../images/PowellCatLocation-2.jpg";
 import three from "../images/PowellCatLocation-03.jpg";
@@ -17,7 +17,7 @@ import fifteen from "../images/PowellCatLocation-15.jpg";
 import sixteen from "../images/PowellCatLocation-16.jpg";
 import seventeen from "../images/PowellCatLocation-17.jpg";
 import eighteen from "../images/PowellCatLocation-18.jpg";
-import Axios from 'axios';
+import { useState } from 'react';
 
 const imagesPath = [
   one,
@@ -82,41 +82,49 @@ const locArr = [
   "Powell Library",
 ];
 
-class Map extends React.Component {
+// class Map extends React.Component {
 
-  state = {
-    imageNum : 0
-  }
-  
-  getImage() {
-    return Axios.get('http://localhost:3001/building').then(response =>{
-       return response.data.number;
-    })
-  }
+//   state = {
+//     imageNum : 
+//   }
 
-  setImage = () => {
-    this.getImage().then(data => {
-      console.log("run", data);
-      this.setState({imageNum : data});
-    }); 
-  }
-
-  render() {
-    const imageNum = this.state.imageNum;
-    return (
+//   render() {
+//     const imageNum = this.state.imageNum;
+//     console.log(imageNum)
+//     return (
+//       <div>
+//         <span>Powell Cat was last seen at:</span>
+//         <div>{locArr[imageNum - 1]}</div>
+//         <img
+//           style={{ maxWidth: "1000px" }}
+//           src={imagesPath[imageNum - 1]}
+//           alt="image"
+//         />
+//         <button onClick={() => this.setImage()}> update </button>
+//         <a href={urlArr[imageNum - 1]}>Take me to Powell Cat</a>
+//       </div>
+//     );
+//   }
+// }
+const Map = (props) =>{
+  const [image, setImage]= useState(0);
+  (async () => {
+    var num = await props.getImage
+    setImage(num)
+    console.log("num is " +image)
+  })()
+  return(
       <div>
         <span>Powell Cat was last seen at:</span>
-        <div>{locArr[imageNum - 1]}</div>
+        <div>{locArr[image - 1]}</div>
         <img
           style={{ maxWidth: "1000px" }}
-          src={imagesPath[imageNum - 1]}
+          src={imagesPath[image - 1]}
           alt="image"
         />
-        <button onClick={this.setImage}> update </button>
-        <a href={urlArr[imageNum - 1]}>Take me to Powell Cat</a>
+        <a href={urlArr[props.imageNum - 1]}>Take me to Powell Cat</a>
       </div>
     );
-  }
 }
 
 export default Map;

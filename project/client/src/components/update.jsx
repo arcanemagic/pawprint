@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import map from "../images/UCLAMAP.png";
 import "./update.css";
 import Axios from 'axios';
+import Map from "./map";
+import { set } from "mongoose";
 
 class Update extends React.Component {
   changeMap(num) {
@@ -16,10 +18,16 @@ class Update extends React.Component {
     console.log("you have updated the location "+num);
   }
 
+   getImage = async () => {
+    const res =  await Axios.get('http://localhost:3001/building')
+    console.log("getimage"+res.data.number)
+    return res.data.number;
+  };
+
   render() {
-    const num = 9;
     return (
       <div>
+        <Map getImage={this.getImage()}/>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
