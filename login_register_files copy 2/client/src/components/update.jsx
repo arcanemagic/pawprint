@@ -6,7 +6,7 @@ import Axios from 'axios'
 class Update extends React.Component {
   changeMap(num) {
     alert("you have updated the location");
-    Axios.post("http://localhost:3001/updateBuilding", {
+    Axios.post("http://localhost:8000/updateBuilding", {
       number : num
     }).then(() =>{
       console.log("success");

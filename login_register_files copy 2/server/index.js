@@ -1,35 +1,10 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const mysql = require('mysql');
-const cors = require('cors');
-const { response } = require('express');
+const cors = require("cors");
 
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
-
+app.use(cors());
 app.use(express.json());
-app.use(cors({
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
-    credentials:true
-}));
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended:true}));
-
-app.use(session({
-    key: "userID",
-    secret: "ITSASECRETE",
-    resave:false,
-    saveUninitialized:false,
-    cookie:{
-         expires: 60*60*2, // exppire 12 hours
-    },
- })
-);
+const mysql = require('mysql');
 
 const db = mysql.createConnection({
     user: "root",
@@ -38,64 +13,48 @@ const db = mysql.createConnection({
     database: "userSys",
 });
 
-app.post('/create',(req, res) => {
+app.post("/create", (req, res) => {
     const name = req.body.name;
     const username = req.body.username;
     const passwd = req.body.passwd;
     const email = req.body.email;
     const uid = req.body.uid;
-
-    bcrypt.hash(passwd,saltRounds,(err, hash) =>{
-        if(err){
-            console.log(err)
-        }
-         db.query(
+    db.query(
         "INSERT INTO Users (name, username, passwd, email ,uid) VALUES (?,?,?,?,?)", 
-        [name, username, hash, email ,uid], 
-        (err,result) =>{
-            console.log(err);
-        }
+        [name, username, passwd, email ,uid], 
+      (err, results) => {
+        console.log(err);
+        res.send(results);
+      }
     );
-    })
-   
-});
-
-app.get("/login",(req,res) =>{
-    if(req.session.user){
-        res.send({loggedIn: true, user:req.session.user});
-    }else{
-        res.send({loggedIn: false});
-    }
-})
-
-app.post('/login',(req, res) => {
+  });
+  
+  app.post("/login", (req, res) => {
     const username = req.body.username;
     const passwd = req.body.passwd;
-
+  
     db.query(
-        "SELECT username, passwd FROM Users WHERE username = ?;", 
-        username, 
-        (err,result) =>{
-            if(err){
-                res.send({err:err});
-                
-            }
-            if(result.length > 0){
-                bcrypt.compare(passwd, result[0].passwd, (error, response) =>{
-                    if(response){
-                        req.session.user = result;
-                        console.log(req.session.user);
-                        res.send(result)
-                    }else{
-                        res.send({message:"Wrong username/password combination!" });
-                    }
-                })
-            }else{
-                res.send({message:"User doesn't exist!" });
-            }
+      "SELECT * FROM Users WHERE username = ?",
+      username,
+      (err, results) => {
+        if (err) {
+          console.log(err);
         }
+        if (results.length > 0) {
+          if (passwd == results[0].passwd) {
+            res.json({ loggedIn: true, username: username });
+          } else {
+            res.json({
+              loggedIn: false,
+              message: "Wrong username/password combo!",
+            });
+          }
+        } else {
+          res.json({ loggedIn: false, message: "User doesn't exist" });
+        }
+      }
     );
-});
+  });
 
 app.post('/updateBuilding', (req, res) => {
     db.query("SELECT * from picid", (err, res) => {
@@ -125,7 +84,6 @@ app.post("/post",(req,res) =>{
     const title = req.body.title;
     const image = req.body.image;
     const author = req.body.author;
-
     db.query(
         "INSERT INTO posts (title, image, useer_id) VALUES (?,?,?)",
         [title, image, author],
@@ -207,7 +165,7 @@ app.post("/unlike", (req,res) =>{
     )
 })
 
-app.listen(3001, ()=>{
-    console.log("Yey, your server is running in 3001")
+app.listen(8000, ()=>{
+    console.log("Yey, your server is running in 8000")
 });
 

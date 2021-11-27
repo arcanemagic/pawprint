@@ -1,58 +1,53 @@
 import "../css/App.css";
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [passwd, setPasswd] = useState("");
 
-  const [loginStatus, setLoginStatus] = useState("");
-  Axios.defaults.withCredentials = true;
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const checklogin = () => {
-    Axios.post("http://localhost:3001/login", {
+  let history = useNavigate();
+
+  const login = () => {
+    Axios.post("http://localhost:8000/login", {
       username: username,
       passwd: passwd,
     }).then((response) => {
-      if (response.data.message) {
-        setLoginStatus(response.data.message);
+      console.log("response: true")
+      if (response.data.loggedIn) {
+        localStorage.setItem("loggedIn", true);
+        localStorage.setItem("username", response.data.username);
+        //history.push("/");
       } else {
-        setLoginStatus(response.data[0].username);
+        setErrorMessage(response.data.message);
       }
     });
   };
 
-  useEffect(() => {
-    Axios.get("http://localhost:3001/login").then((response) => {
-      if (response.data.loggedIn === true) {
-        setLoginStatus(response.data.user[0].username);
-      }
-    });
-  }, []);
-
   return (
-    <div className="App">
-      <div className="information">
-        <label className="register">Log in</label>
-        <label>Username:</label>
+    <div className="Login">
+      <h1>Login</h1>
+      <div className="LoginForm">
         <input
           type="text"
+          placeholder="Username..."
           onChange={(event) => {
             setUsername(event.target.value);
           }}
         />
-
-        <label>Password:</label>
         <input
-          type="text"
+          type="password"
+          placeholder="Password..."
           onChange={(event) => {
             setPasswd(event.target.value);
           }}
         />
-
-        <button onClick={checklogin}>Log in</button>
+        <button onClick={login}>Login</button>
+        <h1 style={{ color: "red" }}>{errorMessage} </h1>
       </div>
-      <h1>{loginStatus}</h1>
     </div>
   );
 }

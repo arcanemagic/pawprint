@@ -10,7 +10,7 @@ function App() {
   const [uid, setUid] = useState(0);
 
   const register = () => {
-    Axios.post("http://localhost:3001/create", {
+    Axios.post("http://localhost:8000/create", {
       name: name,
       username: username,
       passwd: passwd,
