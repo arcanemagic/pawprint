@@ -26,6 +26,11 @@
   width: 500px;
 }
 
+.post_image img{
+  width: 500px;
+  height: auto;
+}
+
 .user_caption {
   font-family: "Patrick Hand SC", cursive;
   padding-bottom: 5px;

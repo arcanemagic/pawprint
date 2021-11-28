@@ -7,10 +7,10 @@ app.use(express.json());
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
-    user: "root",
+    user: "newuser",
     host: "localhost",
-    password: "05231919",
-    database: "userSys",
+    password: "1234",
+    database: "userDB",
 });
 
 app.post("/create", (req, res) => {
@@ -81,11 +81,12 @@ app.get('/building', (req, result) => {
 })
 
 app.post("/post",(req,res) =>{
+    console.log(req.body)
     const title = req.body.title;
     const image = req.body.image;
     const author = req.body.author;
     db.query(
-        "INSERT INTO posts (title, image, useer_id) VALUES (?,?,?)",
+        "INSERT INTO posts (title, image, user_id, num_like) VALUES (?,?,?,0)",
         [title, image, author],
         (err, result) =>{
             if(err){
@@ -95,12 +96,12 @@ app.post("/post",(req,res) =>{
     )
 })
 
-app.get("/social", (req,res) =>{
+app.get("/social", (req,result) =>{
     db.query("SELECT * FROM posts", (err, res) =>{
         if(err){
-            res.send({err:err});
+            console.log(err);
         }
-        res.send(res);
+        result.send(res);
     })
 })
 
@@ -112,16 +113,16 @@ app.post("/like", (req,res) =>{
     db.query(
         "INSERT INTO Likes(user_id, post_id) VALUES(?,?) on duplicate key update post_id = ?"
          [user_id, post_id],
-         (err, res) =>{
+         (err, result) =>{
              if(err){
                 console.log(err);
              }
              db.query("UPDATE posts SET num_like = num_like+1 where id = ?",
              post_id,
              (err2,res2)=>{
-                 res.send(res);
+                 res.send(result);
              }
-             )
+            )
          }
     )
 })

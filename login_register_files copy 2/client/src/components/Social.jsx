@@ -33,14 +33,6 @@ function Social() {
             tag="cat"
           />
         </li>
-        <li>
-          <Post
-            username="adithi.ramesh02"
-            caption="So Cute!!"
-            image={cat_img}
-            tag="cat"
-          />
-        </li>
       </ul>
     </div>
   );
