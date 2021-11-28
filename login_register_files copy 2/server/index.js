@@ -97,7 +97,7 @@ app.post("/post",(req,res) =>{
 })
 
 app.get("/social", (req,result) =>{
-    db.query("SELECT * FROM posts", (err, res) =>{
+    db.query("SELECT * FROM posts ORDER BY id DESC", (err, res) =>{
         if(err){
             console.log(err);
         }

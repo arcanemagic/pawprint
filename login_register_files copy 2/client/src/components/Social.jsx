@@ -24,7 +24,6 @@ function Social() {
         </NavLink>
       </div>
       <ul>
-        {/*will display latest 10 posts*/}
         <li>
           <Post
             username="adithi.ramesh02"
