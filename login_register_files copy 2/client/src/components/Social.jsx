@@ -15,10 +15,6 @@ function Social() {
         </NavLink>
       </div>
       <ul>
-        <li>
-          <Post
-          />
-        </li>
       </ul>
     </div>
   );

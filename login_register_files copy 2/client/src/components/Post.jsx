@@ -85,7 +85,7 @@ function Post() {
           </div>
         );
       })}
-    </div>
+      </div>
   );
 }
 export default Post;

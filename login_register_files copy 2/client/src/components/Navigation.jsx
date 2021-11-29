@@ -28,8 +28,8 @@ function Navigation() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/social">
-                  Animal Social Media
+                <NavLink className="nav-link" to="/create">
+                  Post
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -44,12 +44,17 @@ function Navigation() {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to='/profile'>
-                  profile
+                  Profile
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to='/Search'>
-                  search
+                  Search
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to='/Post'>
+                Animal Social Media
                 </NavLink>
               </li>
             </ul>

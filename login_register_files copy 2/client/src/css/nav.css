@@ -23,6 +23,8 @@
   display: flex;
   background-color: lemonchiffon;
   width: 100%;
+  box-shadow: 2px 2px 5px black;
+  justify-content: flex-end;
 }
 
 .container .pawprint_header {
@@ -41,5 +43,8 @@
 }
 
 .container .nav-link {
-  color: black;
+  color: rgb(68, 107, 235);
+  font-size: 18px;
+  font-family: Bradley Hand, cursive, bold
+
 }

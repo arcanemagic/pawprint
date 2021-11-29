@@ -1,9 +1,11 @@
 .user_post {
-  border: 1px solid lightgray;
-  max-width: 500px;
+  margin-top: 80px;
+  width: 400px;
   background-color: white;
-  margin-bottom: 30px;
+  margin-bottom: 80px;
   margin: auto;
+  flex-direction: column;
+  border: 2px solid black;
 }
 .username_header {
   object-fit: contain;
@@ -12,8 +14,9 @@
   vertical-align: middle;
   display: flex;
   align-items: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
 
 .username_logo {
@@ -23,12 +26,14 @@
 }
 
 .post_image {
-  width: 500px;
+  margin-top: 20px;
+  width: 300px;
 }
 
 .post_image img{
-  width: 500px;
+  width: 300px;
   height: auto;
+  padding-left:8%
 }
 
 .user_caption {
@@ -50,4 +55,46 @@
 
 .likes {
   padding-left: 4px;
+}
+
+.Post{
+  width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Name{
+  display: flex;
+  color:royalblue;
+  margin-left: 44%;
+  font-size: 30px;
+  font-family: Marker Felt, fantasy;
+}
+
+.pp{
+  display: flex;
+  color:royalblue;
+  margin-left: 42%;
+  font-size: 40px;
+  font-family: Marker Felt, fantasy;
+}
+
+.powell{
+  display: flex;
+  margin-top: 20px;
+  color:royalblue;
+  font-size: 30px;
+  font-family: Marker Felt, fantasy;
+}
+
+.Take{
+  display: flex;
+  margin-top: 20px;
+  color:turquoise;
+  font-size: 30px;
+  font-family: Marker Felt, fantasy;
+  margin-bottom: 30px;
 }

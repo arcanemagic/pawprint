@@ -24,7 +24,8 @@ function Profile() {
   return (
     <div>
        <div>
-      <h1>{localStorage.getItem("username")}</h1>
+       <h2 className="pp">Profile page: </h2>
+      <h1 className="Name">Name:   {localStorage.getItem("username")}</h1>
       {yourUploads.map((val, key) => {
         return (
           <div className="user_post">

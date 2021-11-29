@@ -1,4 +1,4 @@
-import "../css/App.css";
+import "../css/Login.css";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,8 @@ function Login() {
 
   return (
     <div className="Login">
-      <h1>Login</h1>
+      <h1 className="registe">Login</h1>
+      <div className="information">
       <div className="LoginForm">
         <input
           type="text"
@@ -45,6 +46,7 @@ function Login() {
             setPasswd(event.target.value);
           }}
         />
+        </div>
         <button onClick={login}>Login</button>
         <h1 style={{ color: "red" }}>{errorMessage} </h1>
       </div>

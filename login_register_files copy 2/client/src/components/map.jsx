@@ -18,6 +18,7 @@ import sixteen from "../images/maps/PowellCatLocation-16.jpg";
 import seventeen from "../images/maps/PowellCatLocation-17.jpg";
 import eighteen from "../images/maps/PowellCatLocation-18.jpg";
 import Axios from 'axios'
+import "../css/Post.css";
 
 const imagesPath = [
   one,
@@ -99,14 +100,16 @@ const Map = () =>{
   
   return(
       <div>
+      <div className= "powell">
         <span>Powell Cat was last seen at:</span>
         <div>{locArr[image - 1]}</div>
+        </div>
+        <a href={urlArr[image - 1]} className="Take">Take me to Powell Cat</a>
         <img
           style={{ maxWidth: "1000px" }}
           src={imagesPath[image - 1]}
           alt="image"
         />
-        <a href={urlArr[image - 1]}>Take me to Powell Cat</a>
       </div>
     );
 }

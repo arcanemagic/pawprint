@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ImgUpload from "./components/ImgUpload";
 import Profile from "./components/profile"
 import Search from "./components/search"
+import Post from "./components/Post"
 
 ReactDOM.render(
   <Router>
@@ -19,12 +20,12 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Map />} />
       <Route path="/update" element={<Update />} />
-      <Route path="/social" element={<Social />} />
       <Route path="/register" element={<App />} />
       <Route path="/login" element={<Login />} />
       <Route path="/create" element={<ImgUpload />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/Post" element={<Post />} />
     </Routes>
   </Router>,
   document.getElementById("root")

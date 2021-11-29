@@ -1,4 +1,4 @@
-import "../css/Social.css";
+import "../css/Search.css";
 import { useState } from "react";
 import Axios from 'axios';
 import { Image } from "cloudinary-react";
@@ -15,8 +15,9 @@ function Search() {
 
     return(
         <div>
-        <div>
-        <input 
+        <div className ="searchs">
+        <h1>Search by User: </h1>
+        <input className="inputss"
             type="text"
             placeholder="User..."
             onChange= {(e) =>{setSearch(e.target.value)}}
@@ -25,7 +26,7 @@ function Search() {
         </div>
         <div>
        <div>
-      <h1>{search}</h1>
+      <h1 className= "name">User:     {search}</h1>
       {yourUploads.map((val, key) => {
         return (
           <div className="user_post">
