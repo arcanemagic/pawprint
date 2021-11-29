@@ -40,9 +40,7 @@
 .icon {
   display: inline;
   width: 50px;
-  padding-left: 2px;
-}
-
-.likes {
   padding-left: 4px;
+  vertical-align: middle;
+  align-items: center;
 }

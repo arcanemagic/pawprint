@@ -6,7 +6,9 @@ import nolikes from "../images/social/powell_cat_nolikes.png";
 import likes from "../images/social/powell_cat_likes.png";
 
 function Icon(props) {
-  return <img className="icon" src={props.symbol} alt={props.altName} />;
+  return (
+  <img className="icon" src={props.symbol} alt={props.altName} />
+  );
 }
 
 function Comment(props) {
@@ -19,9 +21,21 @@ function Comment(props) {
 
 function Post(props) {
   const [likeCount, setLikeCount] = useState(0);
+  const [hasLiked, setLiked] = useState(false);
 
   const incrementLikeCount = () => {
-    setLikeCount(likeCount + 1);
+    {incrementLiked()}
+    if(!hasLiked) 
+      setLikeCount(likeCount + 1);
+    else
+    setLikeCount(likeCount - 1);
+  };
+
+  const incrementLiked = () => {
+    if(!hasLiked) 
+      setLiked(true);
+    else
+    setLiked(false);
   };
 
   const [inputText, setInputText] = useState("");
@@ -51,7 +65,7 @@ function Post(props) {
           <Icon symbol={likes} altName="likes icon" />
         )}
 
-        <div className="likes">{likeCount} likes</div>
+        {likeCount} likes
       </div>
       <div className="user_caption">
         <strong>{props.username} </strong>

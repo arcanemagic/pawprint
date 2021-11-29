@@ -17,7 +17,6 @@ import fifteen from "../images/maps/PowellCatLocation-15.jpg";
 import sixteen from "../images/maps/PowellCatLocation-16.jpg";
 import seventeen from "../images/maps/PowellCatLocation-17.jpg";
 import eighteen from "../images/maps/PowellCatLocation-18.jpg";
-import Axios from 'axios'
 
 const imagesPath = [
   one,
@@ -81,34 +80,28 @@ const locArr = [
   "Powell Library",
   "Powell Library",
 ];
+class Map extends React.Component {
+  state = {
+    num: 9,
+  };
 
-async function getImage(){
-  const res =  await Axios.get('http://localhost:3001/building')
-  console.log("getimage"+res.data.number)
-  return res.data.number;
-};
-
-const Map = () =>{
-  const [image, setImage]= useState(0);
-
-  (async () => {
-    var num = await getImage()
-    setImage(num)
-    console.log("num is " +num)
-  })()
-  
-  return(
+  render() {
+    const imageNum = this.state.num;
+    return (
       <div>
         <span>Powell Cat was last seen at:</span>
-        <div>{locArr[image - 1]}</div>
+        <div>{locArr[imageNum - 1]}</div>
         <img
           style={{ maxWidth: "1000px" }}
-          src={imagesPath[image - 1]}
+          src={imagesPath[imageNum - 1]}
           alt="image"
         />
-        <a href={urlArr[image - 1]}>Take me to Powell Cat</a>
+        <a href={urlArr[imageNum - 1]} target="_blank">
+          Take me to Powell Cat
+        </a>
       </div>
     );
+  }
 }
 
 export default Map;

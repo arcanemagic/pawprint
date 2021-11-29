@@ -1,22 +1,15 @@
 import React, { useState } from "react";
 import map from "../images/maps/UCLAMAP.png";
 import "../css/update.css";
-import Axios from 'axios'
-
 class Update extends React.Component {
   changeMap(num) {
+    //send data to backend
     alert("you have updated the location");
-    Axios.post("http://localhost:3001/updateBuilding", {
-      number : num
-    }).then(() =>{
-      console.log("success");
-    }).then((response) => {
-      console.log(response);
-    });
-    console.log("you have updated the location "+num);
+    console.log("you have updated the location");
   }
 
   render() {
+    const num = 9;
     return (
       <>
         <link
