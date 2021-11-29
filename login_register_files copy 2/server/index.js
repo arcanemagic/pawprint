@@ -7,10 +7,10 @@ app.use(express.json());
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
-    user: "root",
+    user: "newuser",
     host: "localhost",
-    password: "05231919",
-    database: "userSys",
+    password: "1234",
+    database: "userDB",
 });
 
 app.post("/create", (req, res) => {
@@ -182,6 +182,20 @@ app.get("/byUser/:username", (req, res) => {
         if (err) {
           console.log(err);
         }
+        res.send(results);
+      }
+    );
+  });
+
+  app.get("/byTrending", (req, res) => {
+    console.log("is here???")
+    db.query(
+      "SELECT * FROM posts ORDER BY num_like DESC LIMIT 5;",
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(results)
         res.send(results);
       }
     );

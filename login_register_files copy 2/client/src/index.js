@@ -13,6 +13,7 @@ import ImgUpload from "./components/ImgUpload";
 import Profile from "./components/profile"
 import Search from "./components/search"
 import Post from "./components/Post"
+import Trending from "./components/Trending"
 
 ReactDOM.render(
   <Router>
@@ -26,6 +27,7 @@ ReactDOM.render(
       <Route path="/profile" element={<Profile />} />
       <Route path="/search" element={<Search />} />
       <Route path="/Post" element={<Post />} />
+      <Route path="/Trending" element={<Trending />} />
     </Routes>
   </Router>,
   document.getElementById("root")

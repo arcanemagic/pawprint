@@ -29,6 +29,7 @@ function ImgUpload() {
         author: localStorage.getItem("username"),
       })
     });
+    alert("successfully posted!")
   };
   }
 

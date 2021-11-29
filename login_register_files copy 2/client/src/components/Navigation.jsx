@@ -32,6 +32,16 @@ function Navigation() {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" to='/Post'>
+                Animal Social Media
+                </NavLink>
+              </li>  
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/Trending">
+                  Trending
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/create">
                   Post
                 </NavLink>
@@ -47,6 +57,11 @@ function Navigation() {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" to="/" onClick = {logout}>
+                  Logout
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link" to='/profile'>
                   Profile
                 </NavLink>
@@ -55,17 +70,7 @@ function Navigation() {
                 <NavLink className="nav-link" to='/Search'>
                   Search
                 </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to='/Post'>
-                Animal Social Media
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/" onClick = {logout}>
-                  Logout
-                </NavLink>
-              </li>
+              </li> 
             </ul>
           </div>
         </div>

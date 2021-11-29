@@ -11,14 +11,6 @@ function Icon(props) {
   return <img className="icon" src={props.symbol} alt={props.altName} />;
 }
 
-// function Comment(props) {
-//   return (
-//     <div>
-//       <strong>{props.userName}</strong> {props.text}
-//     </div>
-//   );
-// }
-
 function Post() {
   const [uploads, setUploads] = useState([]);
   const [likes, setLikes] = useState([]);
