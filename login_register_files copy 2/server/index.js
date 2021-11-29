@@ -105,66 +105,72 @@ app.get("/social", (req,result) =>{
     })
 })
 
-//like a post
+app.get("/liked", (req,res) =>{
+  const user = req.query.user
+  var ret = [];
+  db.query(
+      "SELECT post_id FROM Likes WHERE user_id = ?", user, (err, results) => {
+          if (err){
+              console.log(err);
+          }
+          else{
+              for (var i of results) 
+                  ret.push(i.post_id);
+              console.log(ret)
+              res.send(ret)
+          }
+      }
+  )
+})
+
 app.post("/like", (req,res) =>{
-    const user_id = req.body.user_id
-    const post_id = req.body.post_id
+  const user_id = req.body.user_id
+  const post_id = req.body.post_id
 
-    db.query(
-        "INSERT INTO Likes(user_id, post_id) VALUES(?,?) on duplicate key update post_id = ?"
-         [user_id, post_id],
-         (err, result) =>{
-             if(err){
-                console.log(err);
-             }
-             db.query("UPDATE posts SET num_like = num_like+1 where id = ?",
-             post_id,
-             (err2,res2)=>{
-                 res.send(result);
-             }
-            )
-         }
-    )
+  db.query(
+      "SELECT * FROM Likes WHERE user_id = ? and post_id = ?", [user_id, post_id], (err, results) => {
+          if (err){
+              console.log(err);
+          }else if (results.length === 0){
+              console.log("inserted "+user_id + " "+post_id)
+              db.query("INSERT INTO Likes(user_id, post_id) VALUES(?,?)",
+              [user_id, post_id],
+              (err, result) =>{
+                  if(err){
+                      console.log(err);
+                  }
+                  db.query("UPDATE posts SET num_like = num_like+1 where id = ?",
+                  post_id,
+                  (err2,res2)=>{
+                      res.send(result);
+                  }
+                  )
+              })
+          }
+      
+  })
 })
 
-//since one user can comments many times, no need to check
-app.post("/comment", (req,res)=>{
-    const comments = req.body.comments
-    const user_id = req.body.user_id
-    const post_id = req.body.post_id 
-
-    db.query("INSERT INTO comment(comment, user_id, post_id) VALUES(?,?,?)"
-    [comments,user_id,post_id],
-    (err,res) =>{
-        if(err){
-            console.log(err);
-        }
-        res.send(res);
-    }
-    )
-})
-
-//unlike a post, assume user only unlike a post when already likes it. implementation is totally up to frontend
 app.post("/unlike", (req,res) =>{
-    const user_id = req.body.user_id
-    const post_id = req.body.post_id
+  const user_id = req.body.user_id
+  const post_id = req.body.post_id
 
-    db.query("DELETE FROM Likes WHERE user_id = ? AND post_id =?"
-    [user_id,post_id],
-    (err, res)=>{
-        if(err){
-            console.log(err)
-        }
-        db.query("UPDATE posts SET num_like = num_like-1 where id = ?",
-             post_id,
-             (err2,res2)=>{
-                 res.send(res);
-             }
-             )
-    }
-    
-    )
+  db.query("DELETE FROM Likes WHERE user_id = ? AND post_id =?",
+  [user_id,post_id],
+  (err, result)=>{
+      if(err){
+          console.log(err)
+      }
+      db.query("UPDATE posts SET num_like = num_like-1 where id = ?",
+           post_id,
+           (err2,res2)=>{
+               res.send(result);
+           }
+           )
+  })
 })
+
+
 
 app.get("/byUser/:username", (req, res) => {
     console.log("is here?")

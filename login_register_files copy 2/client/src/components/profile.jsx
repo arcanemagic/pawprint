@@ -35,9 +35,12 @@ function Profile() {
             <div>
               <div className="user_caption">
                 {" "}
-                {val.title}
+                {"Description:     "}{val.title}
               </div>
             </div>
+            <div className="likes"> 
+              <Icon symbol = {likes} altName = "likes icon"/>
+              {val.num_like} likes </div>
           </div>
         );
       })}

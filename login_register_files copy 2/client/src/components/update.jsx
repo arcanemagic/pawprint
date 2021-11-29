@@ -5,15 +5,20 @@ import Axios from 'axios'
 
 class Update extends React.Component {
   changeMap(num) {
-    alert("you have updated the location");
-    Axios.post("http://localhost:8000/updateBuilding", {
-      number : num
-    }).then(() =>{
-      console.log("success");
-    }).then((response) => {
-      console.log(response);
-    });
-    console.log("you have updated the location "+num);
+    if (localStorage.getItem("loggedIn") === "false"){
+      alert("please log in to update the location!")
+    }
+    else{
+      alert("you have updated the location");
+      Axios.post("http://localhost:8000/updateBuilding", {
+        number : num
+      }).then(() =>{
+        console.log("success");
+      }).then((response) => {
+        console.log(response);
+      });
+      console.log("you have updated the location "+num);
+    }
   }
 
   render() {

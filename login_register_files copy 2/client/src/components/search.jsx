@@ -2,6 +2,10 @@ import "../css/Search.css";
 import { useState } from "react";
 import Axios from 'axios';
 import { Image } from "cloudinary-react";
+import likes from "../images/social/powell_cat_likes.png";
+function Icon(props) {
+  return <img className="icon" src={props.symbol} alt={props.altName} />;
+}
 
 function Search() {
     const [search, setSearch] = useState("")
@@ -36,8 +40,11 @@ function Search() {
             <div>
               <div className="user_caption">
                 {" "}
-                {val.title}
+                {"Description:     "}{val.title}
               </div>
+              <div className="likes"> 
+              <Icon symbol = {likes} altName = "likes icon"/>
+              {val.num_like} likes </div>
             </div>
           </div>
         );

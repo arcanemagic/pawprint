@@ -9,13 +9,18 @@ function ImgUpload() {
 
   let history = useNavigate();
   const upload = () =>{
-    const formData = new FormData();
-    formData.append("file", image[0]);
-    formData.append("upload_preset", "t47cisgt");
-    Axios.post('https://api.cloudinary.com/v1_1/bruin-pawprint/image/upload',
-    formData
-    ).then((response) =>{
-  
+    if (localStorage.getItem("loggedIn") == "false"){
+      console.log("here")
+      alert("please log in to post!")
+    }
+    else{
+      const formData = new FormData();
+      formData.append("file", image[0]);
+      formData.append("upload_preset", "t47cisgt");
+      Axios.post('https://api.cloudinary.com/v1_1/bruin-pawprint/image/upload',
+      formData
+      ).then((response) =>{
+    
       const fileName = response.data.public_id;
       console.log(fileName)
       Axios.post("http://localhost:8000/post",{
@@ -25,7 +30,7 @@ function ImgUpload() {
       })
     });
   };
-
+  }
 
   return (
     <div className="ImgUpload">

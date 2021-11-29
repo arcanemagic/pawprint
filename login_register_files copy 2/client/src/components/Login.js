@@ -20,6 +20,7 @@ function Login() {
       if (response.data.loggedIn) {
         localStorage.setItem("loggedIn", true);
         localStorage.setItem("username", response.data.username);
+        alert("successful logged in!")
         //history.push("/");
       } else {
         setErrorMessage(response.data.message);

@@ -3,7 +3,7 @@ import "../css/Post.css";
 import username_logo from "../images/social/username_logo.png";
 import comment_symbol from "../images/social/comment_symbol.png";
 import nolikes from "../images/social/powell_cat_nolikes.png";
-import likes from "../images/social/powell_cat_likes.png";
+import like from "../images/social/powell_cat_likes.png";
 import Axios from 'axios';
 import { Image } from "cloudinary-react";
 
@@ -21,12 +21,8 @@ function Icon(props) {
 
 function Post() {
   const [uploads, setUploads] = useState([]);
-
-  // const [inputText, setInputText] = useState("");
-
-  // const updateInputBox = (event) => {
-  //   setInputText(event.target.value);
-  // };
+  const [likes, setLikes] = useState([]);
+  const user = localStorage.getItem("username");
 
   useEffect(() => {
     if (!localStorage.getItem("loggedIn")) {
@@ -40,24 +36,40 @@ function Post() {
     });
   }, []);
 
-  // const addComment = () => {
-  //   setComments([
-  //     comments,
-  //     <Comment key={inputText} userName={props.accountName} text={inputText} />,
-  //   ]);
-  //   setInputText("");
-  // };
+  useEffect(() => {
+    Axios.get("http://localhost:8000/liked", {
+      params: {
+        user : user,
+      }
+    }).then((response) => {
+        setLikes(response.data);
+    });
+  }, [user]);
 
   const likePost = (id, key) => {
-    var tempLikes = uploads;
-    tempLikes[key].likes = tempLikes[key].likes + 1;
-
-    Axios.post("http://localhost:8000/like", {
-      user_id: localStorage.getItem("username"),
-      post_id: id,
-    }).then((response) => {
-      setUploads(tempLikes);
-    });
+    if (localStorage.getItem("loggedIn") === "false"){
+      alert("please log in to like!")
+    }
+    else if (likes.includes(id)){
+      Axios.post("http://localhost:8000/unlike", {
+        user_id: user,
+        post_id: id,
+      }).then((response) => {
+        alert("you have unliked this post")
+      });
+    }
+    else{
+      var tempLikes = uploads;
+      tempLikes[key].likes = tempLikes[key].likes + 1;
+      Axios.post("http://localhost:8000/like", {
+        user_id: localStorage.getItem("username"),
+        post_id: id,
+      }).then((response) => {
+        setUploads(tempLikes);
+        alert("you have liked this post")
+      });
+    }
+    
   };
 
   return (
@@ -75,17 +87,22 @@ function Post() {
                 onClick={() => {
                   likePost(val.id, key);
                 }}>
-              <Icon symbol = {likes} altName = "likes icon"/>
-              <div className="likes"> {val.num_like} likes </div>
+                <div className="user_caption">
+                {" "}
+                {"Description:     "}{val.title}
+              </div>
+              <div className="likes"> 
+              { !likes.includes(val.id) ? (
+                <Icon symbol={nolikes} altName="nolikes icon" />
+              ) : (
+                <Icon symbol = {like} altName = "likes icon"/>
+              )}
+              {val.num_like} likes </div>
             </div>
-            {/* <div className="user_caption">
-              <strong>{val.user_id} </strong>
-              {val.title}
-            </div> */}
           </div>
         );
       })}
-      </div>
+    </div>
   );
 }
 export default Post;

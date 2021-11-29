@@ -4,7 +4,11 @@ import "../css/nav.css";
 import logo from "../images/pawprint_logo.png";
 
 function Navigation() {
-  
+  const logout = () =>{
+    localStorage.setItem("loggedIn", false);
+    localStorage.removeItem("username");
+    alert("successfully logged out!")
+  }
   return (
     <div className="navigation">
       <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -55,6 +59,11 @@ function Navigation() {
               <li className="nav-item">
                 <NavLink className="nav-link" to='/Post'>
                 Animal Social Media
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/" onClick = {logout}>
+                  Logout
                 </NavLink>
               </li>
             </ul>
