@@ -10,6 +10,8 @@ import reportWebVitals from "./reportWebVitals";
 import Navigation from "./components/Navigation";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ImgUpload from "./components/ImgUpload";
+import Profile from "./components/profile"
+import Search from "./components/search"
 
 ReactDOM.render(
   <Router>
@@ -21,6 +23,8 @@ ReactDOM.render(
       <Route path="/register" element={<App />} />
       <Route path="/login" element={<Login />} />
       <Route path="/create" element={<ImgUpload />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/search" element={<Search />} />
     </Routes>
   </Router>,
   document.getElementById("root")

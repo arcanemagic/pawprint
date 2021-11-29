@@ -2,7 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../css/nav.css";
 import logo from "../images/pawprint_logo.png";
+
 function Navigation() {
+  
   return (
     <div className="navigation">
       <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -38,6 +40,16 @@ function Navigation() {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/login">
                   Login
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to='/profile'>
+                  profile
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to='/Search'>
+                  search
                 </NavLink>
               </li>
             </ul>

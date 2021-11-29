@@ -7,10 +7,10 @@ app.use(express.json());
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
-    user: "newuser",
+    user: "root",
     host: "localhost",
-    password: "1234",
-    database: "userDB",
+    password: "05231919",
+    database: "userSys",
 });
 
 app.post("/create", (req, res) => {
@@ -165,6 +165,36 @@ app.post("/unlike", (req,res) =>{
     
     )
 })
+
+app.get("/byUser/:username", (req, res) => {
+    console.log("is here?")
+    const userName = req.params.username;
+    db.query(
+      "SELECT * FROM posts WHERE user_id = ?;",
+      userName,
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        }
+        res.send(results);
+      }
+    );
+  });
+
+  app.get("/User/:username", (req, res) => {
+    const userName = req.params.username;
+    db.query(
+      "SELECT * FROM posts WHERE user_id = ?;",
+      userName,
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        }
+        res.send(results);
+      }
+    );
+  });
+  
 
 app.listen(8000, ()=>{
     console.log("Yey, your server is running in 8000")
