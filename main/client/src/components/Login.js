@@ -12,7 +12,7 @@ function Login() {
   let history = useNavigate();
 
   const login = () => {
-    Axios.post("http://localhost:8000/login", {
+    Axios.post("https://bruin-pawprint.herokuapp.com/login", {
       username: username,
       passwd: passwd,
     }).then((response) => {

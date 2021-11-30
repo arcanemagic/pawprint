@@ -84,7 +84,7 @@ const locArr = [
 ];
 
 async function getImage(){
-  const res =  await Axios.get('http://localhost:8000/building')
+  const res =  await Axios.get('https://bruin-pawprint.herokuapp.com/building')
   console.log("getimage"+res.data.number)
   return res.data.number;
 };

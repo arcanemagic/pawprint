@@ -16,7 +16,7 @@ function Profile() {
 
 
   useEffect(() => {
-    Axios.get(`http://localhost:8000/byUser/${localStorage.getItem("username")}`).then((response) => {
+    Axios.get(`https://bruin-pawprint.herokuapp.com/byUser/${localStorage.getItem("username")}`).then((response) => {
         setYouruploads(response.data);
     });
   }, []);

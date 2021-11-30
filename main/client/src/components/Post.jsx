@@ -23,13 +23,13 @@ function Post() {
   }, []);
 
   useEffect(() => {
-    Axios.get("http://localhost:8000/social").then((response) => {
+    Axios.get("https://bruin-pawprint.herokuapp.com/social").then((response) => {
       setUploads(response.data);
     });
   }, []);
 
   useEffect(() => {
-    Axios.get("http://localhost:8000/liked", {
+    Axios.get("https://bruin-pawprint.herokuapp.com/liked", {
       params: {
         user : user,
       }
@@ -43,7 +43,7 @@ function Post() {
       alert("please log in to like!")
     }
     else if (likes.includes(id)){
-      Axios.post("http://localhost:8000/unlike", {
+      Axios.post("https://bruin-pawprint.herokuapp.com/unlike", {
         user_id: user,
         post_id: id,
       }).then((response) => {
@@ -53,7 +53,7 @@ function Post() {
     else{
       var tempLikes = uploads;
       tempLikes[key].likes = tempLikes[key].likes + 1;
-      Axios.post("http://localhost:8000/like", {
+      Axios.post("https://bruin-pawprint.herokuapp.com/like", {
         user_id: localStorage.getItem("username"),
         post_id: id,
       }).then((response) => {

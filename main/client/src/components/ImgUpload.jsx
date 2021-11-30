@@ -22,7 +22,7 @@ function ImgUpload() {
     
       const fileName = response.data.public_id;
       console.log(fileName)
-      Axios.post("http://localhost:8000/post",{
+      Axios.post("https://bruin-pawprint.herokuapp.com/post",{
         title: title,
         image:fileName,
         author: localStorage.getItem("username"),

@@ -12,7 +12,7 @@ function Search() {
     const [yourUploads, setYouruploads] = useState([]);
 
     const search_user =()=>{
-        Axios.get(`http://localhost:8000/User/${search}`).then((response) => {
+        Axios.get(`https://bruin-pawprint.herokuapp.com/User/${search}`).then((response) => {
         setYouruploads(response.data);
     });
     }
