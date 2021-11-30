@@ -6,7 +6,6 @@ app.use(cors());
 app.use(express.json());
 const mysql = require('mysql');
 
-const host = '0.0.0.0';
 const port = process.env.PORT || 8000;
 
 // mysql://badeb00fe5be21:e0d840f6@us-cdbr-east-04.cleardb.com/heroku_ed6443bb67dd7cb?reconnect=true
