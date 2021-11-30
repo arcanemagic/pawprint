@@ -118,12 +118,12 @@ app.get("/liked", (req,res) =>{
           if (err){
               console.log(err);
           }
-          else{
+          else if (results.length > 0){
               for (var i of results) 
                   ret.push(i.post_id);
               console.log(ret)
-              res.send(ret)
           }
+          res.send(ret)
       }
   )
 })
