@@ -9,11 +9,13 @@ const mysql = require('mysql');
 const host = '0.0.0.0';
 const port = process.env.PORT || 8000;
 
+// mysql://badeb00fe5be21:e0d840f6@us-cdbr-east-04.cleardb.com/heroku_ed6443bb67dd7cb?reconnect=true
+
 const db = mysql.createConnection({
-    user: "newuser",
-    host: "localhost",
-    password: "1234",
-    database: "userDB",
+    user: "badeb00fe5be21",
+    host: "us-cdbr-east-04.cleardb.com",
+    password: "e0d840f6",
+    database: "heroku_ed6443bb67dd7cb",
 });
 
 app.post("/create", (req, res) => {
@@ -220,6 +222,6 @@ app.get("/byUser/:username", (req, res) => {
   
 
 app.listen(port, host, ()=>{
-    console.log("Yey, your server is running in 8000")
+    console.log("Yey, your server is running in "+port)
 });
 
