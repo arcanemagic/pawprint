@@ -6,6 +6,8 @@ app.use(cors());
 app.use(express.json());
 const mysql = require('mysql');
 
+const PORT = 8000;
+
 const db = mysql.createConnection({
     user: "newuser",
     host: "localhost",
@@ -216,7 +218,7 @@ app.get("/byUser/:username", (req, res) => {
   });
   
 
-app.listen(8000, ()=>{
+app.listen(process.env.PORT | PORT, ()=>{
     console.log("Yey, your server is running in 8000")
 });
 
