@@ -7,7 +7,6 @@ function ImgUpload() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState([]);
 
-  let history = useNavigate();
   const upload = () =>{
     if (localStorage.getItem("loggedIn") == "false"){
       console.log("here")
