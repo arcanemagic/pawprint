@@ -1,0 +1,20 @@
+.App {
+  background-color: mintcream;
+  display: flex;
+}
+
+.App .select {
+  width: 10%;
+}
+li {
+  list-style-type: none;
+}
+
+select {
+  width: 20%;
+}
+
+.postbutton {
+  text-align: right;
+  margin: 10px;
+}
