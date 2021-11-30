@@ -42,6 +42,10 @@ function handleDisconnect() {
 
 handleDisconnect();
 
+setInterval(function () {
+  db.query('SELECT 1');
+}, 5000);
+
 app.post("/create", (req, res) => {
     const name = req.body.name;
     const username = req.body.username;
