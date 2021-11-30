@@ -221,7 +221,5 @@ app.get("/byUser/:username", (req, res) => {
   });
   
 
-app.listen(process.env.PORT || 3000, ()=>{
-    console.log("Yey, your server is running in "+port)
-});
+app.listen(process.env.PORT || 3000);
 
