@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from "react";
 import "../css/Post.css";
-import username_logo from "../images/social/cute_dog.jpg";
+import username_logo from "../images/social/profile_img.jpg";
 import comment_symbol from "../images/social/comment_symbol.png";
 import nolikes from "../images/social/powell_cat_nolikes.png";
 import likes from "../images/social/powell_cat_likes.png";
