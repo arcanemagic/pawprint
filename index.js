@@ -16,7 +16,7 @@ var db_config = {
 
 // mysql://badeb00fe5be21:e0d840f6@us-cdbr-east-04.cleardb.com/heroku_ed6443bb67dd7cb?reconnect=true
 
-const db = mysql.createConnection(db_config);
+const db = mysql.createPool(db_config);
 
 var connection;
 
