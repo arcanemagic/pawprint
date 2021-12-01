@@ -15,7 +15,7 @@ const Nav = styled.nav`
 `;
 
 const NavLink = css`
-    color: #fff;
+    color: #003B5C;
     display: flex;
     align-items: center;
     padding: 0 1rem;

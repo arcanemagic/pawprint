@@ -219,14 +219,14 @@ const Home = () => {
                             <h1>Powell Cat was last seen at {MapData[image - 1].location}</h1>
                             <p>
                             <Button
-                                to={MapData[image - 1].mapsUrl}
+                                href ={MapData[image - 1].mapsUrl}
                                 primary='true'
                             >
                                 Take me there
                                 <Arrow />
                             </Button>
                             <Button
-                                to="/update"
+                                href ="/update"
                                 primary='true'
                             >
                                 Update location
