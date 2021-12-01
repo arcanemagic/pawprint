@@ -34,19 +34,18 @@ function ImgUpload() {
   }
 
   return (
-    <div className="ImgUpload">
-    <h1>Create a Post</h1>
-      <label>Say something:</label>
-      <input type="text"
-      placeholder="Title..."
-      onChange={(event) => {
-      setTitle(event.target.value);
-          }}
+      <div className="ImgUpload">
+        <h1>Create a Post</h1>
+        <input type="text"
+          placeholder="Caption"
+          onChange={(event) => {
+          setTitle(event.target.value);
+            }}
        />
 
-      <input type="file" onChange={(e)=> setImage(e.target.files)}/>
-      <button onClick={upload}>Submit</button>
-    </div>
+        <input type="file" onChange={(e)=> setImage(e.target.files)}/>
+        <button onClick={upload}>Create</button>
+      </div>
   );
 }
 export default ImgUpload;

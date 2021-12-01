@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from "react";
 import "../css/Post.css";
-import username_logo from "../images/social/username_logo.png";
+import username_logo from "../images/social/cute_dog.jpg";
 import comment_symbol from "../images/social/comment_symbol.png";
 import nolikes from "../images/social/powell_cat_nolikes.png";
 import like from "../images/social/powell_cat_likes.png";
@@ -75,6 +75,10 @@ function Post() {
         return (
           <div className="user_post">
             <div className="username_header">
+             <img
+                className="username_logo"
+                src={username_logo}
+                alt="logo"/>
               <strong>{val.user_id}</strong>
             </div>
             <div className="post_image">
@@ -84,10 +88,6 @@ function Post() {
                 onClick={() => {
                   likePost(val.id, key);
                 }}>
-                <div className="user_caption">
-                {" "}
-                {"Description:     "}{val.title}
-              </div>
               <div className="likes"> 
               { !likes.includes(val.id) ? (
                 <Icon symbol={nolikes} altName="nolikes icon" />
@@ -95,11 +95,17 @@ function Post() {
                 <Icon symbol = {like} altName = "likes icon"/>
               )}
               {val.num_like} likes </div>
+              <div className="user_caption">
+                {" "}
+                <strong>{val.user_id}</strong> {" "} {val.title}
+              </div>
             </div>
           </div>
         );
       })}
     </div>
   );
+  
 }
+
 export default Post;
