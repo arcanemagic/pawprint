@@ -1,36 +1,41 @@
+.createContainer {
+  width: 100%;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: mintcream;
+}
+
 .ImgUpload{
-    width: 300px;
+    width: 600px;
     height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
-    font-family: 'Permanent Marker', cursive;
     border: 1px solid lightgray;
     box-shadow: 2px 2px 5px lightgray;
-    margin-left: 470px;
-    margin-top: 47px;
 }
 
 .ImgUpload label{
     margin-bottom: 15px;
     font-size: 18px;
     font-weight: 80;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .ImgUpload input{
   width: 200px;
   height: 30px;
   font-size: 15px;
-  padding-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .ImgUpload button{
-    margin-top: 40px;
-    width: 80px;
+  margin-top: 40px;
+  width: 80px;
   height: 40px;
   margin-top: 10px;
 }

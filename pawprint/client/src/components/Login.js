@@ -1,7 +1,8 @@
 import "../css/Login.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Button } from "./Button";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -15,7 +16,7 @@ function Login() {
     if(localStorage.getItem("loggedIn") === "true"){
       alert("Can not login again")
     }else{
-    Axios.post("http://localhost:8000/login", {
+    Axios.post("https://bruin-pawprint.herokuapp.com/login", {
       username: username,
       passwd: passwd,
     }).then((response) => {
@@ -40,20 +41,20 @@ function Login() {
       <div className="LoginForm">
         <input
           type="text"
-          placeholder="Username..."
+          placeholder="Username"
           onChange={(event) => {
             setUsername(event.target.value);
           }}
         />
         <input
           type="password"
-          placeholder="Password..."
+          placeholder="Password"
           onChange={(event) => {
             setPasswd(event.target.value);
           }}
         />
         </div>
-        <button onClick={login}>Login</button>
+        <Button onClick={login} primary="true">Login</Button>
         <h1 style={{ color: "red" }}>{errorMessage} </h1>
       </div>
     </div>

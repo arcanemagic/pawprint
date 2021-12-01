@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from './Button';
-import styled, { css } from 'styled-components/macro';
+import styled from 'styled-components';
 import {IoMdArrowRoundForward} from 'react-icons/io';
 import Axios from 'axios';
 import one from "../images/maps/PowellCatLocation-1.jpg";
@@ -220,6 +220,7 @@ const Home = () => {
                             <p>
                             <Button
                                 href ={MapData[image - 1].mapsUrl}
+                                target="_blank"
                                 primary='true'
                             >
                                 Take me there

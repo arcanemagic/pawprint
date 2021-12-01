@@ -2,6 +2,7 @@ import "../css/App.css";
 import { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Button } from "./Button";
 
 function App() {
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ function App() {
   let nav = useNavigate();
   const register = () => {
     
-    Axios.post("http://localhost:8000/create", {
+    Axios.post("https://bruin-pawprint.herokuapp.com/create", {
       name: name,
       username: username,
       passwd: passwd,
@@ -34,48 +35,44 @@ function App() {
   return (
     <div className="App">
       <div className="information">
-        <label className="register">Register</label>
-        <label>Name:</label>
+        <h1 className="register">Register</h1>
         <input
           type="text"
+          placeholder="Name"
           onChange={(event) => {
             setName(event.target.value);
           }}
         />
-
-        <label>Username:</label>
         <input
           type="text"
+          placeholder="Username"
           onChange={(event) => {
             setUsername(event.target.value);
           }}
         />
-
-        <label>Password:</label>
         <input
           type="text"
+          placeholder="Password"
           onChange={(event) => {
             setPasswd(event.target.value);
           }}
         />
-
-        <label>Email:</label>
         <input
           type="text"
+          placeholder="Email"
           onChange={(event) => {
             setEmail(event.target.value);
           }}
         />
-
-        <label>University ID:</label>
         <input
           type="number"
+          placeholder="University ID"
           onChange={(event) => {
             setUid(event.target.value);
           }}
         />
 
-        <button onClick={register}>Register</button>
+        <Button onClick={register} primary="true">Register</Button>
         <h1 style={{ color: "red" }}>{message} </h1>
       </div>
     </div>

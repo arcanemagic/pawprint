@@ -1,11 +1,15 @@
 import React, {useEffect, useState } from "react";
 import "../css/Post.css";
 import username_logo from "../images/social/profile_img.jpg";
-import comment_symbol from "../images/social/comment_symbol.png";
 import nolikes from "../images/social/powell_cat_nolikes.png";
 import likes from "../images/social/powell_cat_likes.png";
 import Axios from 'axios';
+import styled from "styled-components";
 import { Image } from "cloudinary-react";
+import { Button } from "./Button";
+import { IoIosAdd } from "react-icons/io"
+
+const PlusIcon = styled(IoIosAdd)``;
 
 function Icon(props) {
     return <img className="icon" src={props.symbol} alt={props.altName} />;
@@ -16,13 +20,22 @@ function Icon(props) {
   
   
     useEffect(() => {
-      Axios.get("http://localhost:8000/byTrending").then((response) => {
+      Axios.get("https://bruin-pawprint.herokuapp.com/byTrending").then((response) => {
           setTrends(response.data);
       });
     }, []);
   
     return (
-      <div>
+      <div className="postContainer">
+        <div class="postButtons">
+          <Button primary="true" href="/create">
+            New Post
+            <PlusIcon />
+          </Button>
+          <Button primary="true" href="/post">
+            Sort chronologically
+          </Button>
+        </div>
         {trends.map((val, key) => {
           return (
             <div className="user_post">

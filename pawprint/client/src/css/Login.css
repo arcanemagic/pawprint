@@ -1,47 +1,42 @@
 .Login{
-    width: 100%;
-    height: 750px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: mintcream;
+  width: 100%;
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: mintcream;
 }
 
 .LoginForm{
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .information {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .information input {
-    width: 200px;
-    height: 30px;
-    font-size: 20px;
-    padding-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .information button {
-    width: 100px;
-    height: 40px;
-    margin-top: 50px;
-  }
-  
-  .information button:hover {
-    cursor: pointer;
-  }
-  
-  .register {
-    margin-bottom: 20px;
-    font-size:35px;
-    font-family: Chalkduster, fantasy;
-  }
+.information input {
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.information button {
+  width: 100px;
+  height: 40px;
+  margin-top: 50px;
+}
+
+.register {
+  margin-bottom: 20px;
+  font-size:35px;
+}
 
   

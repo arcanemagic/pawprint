@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const Button = styled.a`
     background: ${({ primary }) => (primary ? '#000d1a' : 'CD853F')};
@@ -9,8 +8,7 @@ export const Button = styled.a`
     min-width: 100px;
     max-width: 200px;
     cursor: pointer;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem;
     text-decoration: none;
     transition: 0.3s;
     display: flex;
