@@ -20,6 +20,8 @@ var db_config = {
 
 const db = mysql.createConnection(db_config);
 
+var connection;
+
 function handleDisconnect() {
   connection = mysql.createConnection(db_config); // Recreate the connection, sincethe old one cannot be reused.
 
@@ -41,10 +43,6 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
-
-setInterval(function () {
-  db.query('SELECT 1');
-}, 5000);
 
 app.post("/create", (req, res) => {
     const name = req.body.name;
