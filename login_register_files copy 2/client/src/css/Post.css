@@ -1,0 +1,112 @@
+.user_post {
+  margin-top: 80px;
+  width: 400px;
+  background-color: white;
+  margin-bottom: 80px;
+  margin: auto;
+  flex-direction: column;
+  border: 2px solid black;
+}
+
+.user_post button{
+  align-content: flex-end;
+}
+
+.username_header {
+  object-fit: contain;
+  font-size: 130%;
+  font-family: "Patrick Hand SC", cursive;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.username_logo {
+  width: 50px;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+
+.post_image {
+  margin-top: 20px;
+  width: 300px;
+}
+
+.post_image img{
+  width: 300px;
+  height: auto;
+  padding-left:8%
+}
+
+.user_caption {
+  font-family: "Patrick Hand SC", cursive;
+  padding-bottom: 5px;
+  padding-top: 2px;
+  padding-left: 5px;
+}
+
+.icons {
+  display: inline-block;
+}
+
+.icon {
+  display: inline;
+  width: 50px;
+  padding-left: 2px;
+}
+
+.likes {
+  padding-left: 4px;
+}
+
+.Post{
+  width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Name{
+  display: flex;
+  color:royalblue;
+  margin-left: 35%;
+  font-size: 30px;
+  font-family: Marker Felt, fantasy;
+}
+
+.pp{
+  display: flex;
+  color:royalblue;
+  margin-left: 42%;
+  font-size: 40px;
+  font-family: Marker Felt, fantasy;
+}
+
+.powell{
+  display: flex;
+  margin-top: 20px;
+  color:royalblue;
+  font-size: 30px;
+  font-family: Marker Felt, fantasy;
+}
+
+.Take{
+  display: flex;
+  margin-top: 20px;
+  color:turquoise;
+  font-size: 30px;
+  font-family: Marker Felt, fantasy;
+  margin-bottom: 30px;
+}
+
+.delete_post{
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  align-items: right;
+}
