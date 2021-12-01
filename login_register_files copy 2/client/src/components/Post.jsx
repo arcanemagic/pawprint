@@ -43,22 +43,27 @@ function Post() {
       alert("please log in to like!")
     }
     else if (likes.includes(id)){
+      var dislikes = uploads;
+      dislikes[key].num_like = dislikes[key].num_like - 1;
       Axios.post("http://localhost:8000/unlike", {
         user_id: user,
         post_id: id,
       }).then((response) => {
-        alert("you have unliked this post")
+        setUploads(dislikes);
+        setLikes(response.data)
+        console.log("you have unliked this post")
       });
     }
     else{
       var tempLikes = uploads;
-      tempLikes[key].likes = tempLikes[key].likes + 1;
+      tempLikes[key].num_like = tempLikes[key].num_like + 1;
       Axios.post("http://localhost:8000/like", {
         user_id: localStorage.getItem("username"),
         post_id: id,
       }).then((response) => {
         setUploads(tempLikes);
-        alert("you have liked this post")
+        setLikes(response.data)
+        console.log("you have liked this post")
       });
     }
     

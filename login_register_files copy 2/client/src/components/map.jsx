@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import one from "../images/maps/PowellCatLocation-1.jpg";
 import two from "../images/maps/PowellCatLocation-2.jpg";
 import three from "../images/maps/PowellCatLocation-03.jpg";
@@ -83,20 +83,16 @@ const locArr = [
   "Powell Library",
 ];
 
-async function getImage(){
-  const res =  await Axios.get('http://localhost:8000/building')
-  console.log("getimage"+res.data.number)
-  return res.data.number;
-};
+
 
 const Map = () =>{
   const [image, setImage]= useState(0);
 
-  (async () => {
-    var num = await getImage()
-    setImage(num)
-    console.log("num is " +num)
-  })()
+  useEffect(() => {
+    Axios.get("http://localhost:8000/building").then((response) => {
+      setImage(response.data.number);
+    });
+  }, []);
   
   return(
       <div>

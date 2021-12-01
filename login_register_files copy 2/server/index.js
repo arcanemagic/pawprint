@@ -6,11 +6,11 @@ app.use(cors());
 app.use(express.json());
 const mysql = require('mysql');
 
-const db = mysql.createConnection({
-    user: "root",
-    host: "localhost",
-    password: "05231919",
-    database: "userSys",
+const db = mysql.createPool({
+    host: 'us-cdbr-east-04.cleardb.com',
+    user: 'badeb00fe5be21',
+    password: 'e0d840f6',
+    database: 'heroku_ed6443bb67dd7cb'
 });
 
 app.post("/create", (req, res) => {
@@ -160,13 +160,27 @@ app.post("/like", (req,res) =>{
                   db.query("UPDATE posts SET num_like = num_like+1 where id = ?",
                   post_id,
                   (err2,res2)=>{
-                      res.send(result);
+                      // res.send(result);
                   }
                   )
               })
           }
       
   })
+  var ret = [];
+  db.query(
+      "SELECT post_id FROM Likes WHERE user_id = ?", user_id, (err, results) => {
+          if (err){
+              console.log(err);
+          }
+          else{
+              for (var i of results) 
+                  ret.push(i.post_id);
+              ret.push(post_id)
+              res.send(ret)
+          }
+      }
+  )
 })
 
 app.post("/unlike", (req,res) =>{
@@ -182,10 +196,25 @@ app.post("/unlike", (req,res) =>{
       db.query("UPDATE posts SET num_like = num_like-1 where id = ?",
            post_id,
            (err2,res2)=>{
-               res.send(result);
            }
            )
   })
+  var ret = [];
+  db.query(
+      "SELECT post_id FROM Likes WHERE user_id = ?", user_id, (err, results) => {
+          if (err){
+              console.log(err);
+          }
+          else{
+              for (var i of results) {
+                  if (i.post_id!==post_id){
+                    ret.push(i.post_id);
+                  }
+              }
+              res.send(ret)
+          }
+      }
+  )
 })
 
 
