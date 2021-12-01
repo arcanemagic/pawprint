@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .user_post {
   margin-top: 80px;
   width: 400px;
@@ -71,7 +73,7 @@
   color:royalblue;
   margin-left: 44%;
   font-size: 30px;
-  font-family: Marker Felt, fantasy;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .pp{
@@ -79,22 +81,20 @@
   color:royalblue;
   margin-left: 42%;
   font-size: 40px;
-  font-family: Marker Felt, fantasy;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .powell{
-  display: flex;
   margin-top: 20px;
   color:royalblue;
   font-size: 30px;
-  font-family: Marker Felt, fantasy;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .Take{
-  display: flex;
   margin-top: 20px;
   color:turquoise;
   font-size: 30px;
-  font-family: Marker Felt, fantasy;
+  font-family: 'Permanent Marker', cursive;
   margin-bottom: 30px;
 }

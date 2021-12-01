@@ -7,7 +7,7 @@ function Navigation() {
   const logout = () =>{
     localStorage.setItem("loggedIn", false);
     localStorage.removeItem("username");
-    alert("successfully logged out!")
+    alert("Successfully logged out!")
   }
   return (
     <div className="navigation">

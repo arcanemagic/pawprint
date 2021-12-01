@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .Search{
     width: 100%;
     height: 750px;
@@ -9,7 +11,7 @@
 }
 
 .searchs{
-    font-family: Chalkduster, fantasy;
+    font-family: 'Permanent Marker', cursive;
     margin-top: 30px;
 }
 
@@ -34,5 +36,5 @@
     color:royalblue;
     margin-left: 38%;
     font-size: 40px;
-    font-family: Marker Felt, fantasy;
+    font-family: 'Permanent Marker', cursive;
 }

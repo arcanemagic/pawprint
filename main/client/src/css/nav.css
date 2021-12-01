@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
 .container ul {
   list-style-type: none;
   margin: 0;
@@ -15,7 +17,6 @@
 .container li Navlink {
   display: block;
   color: white;
-
   text-decoration: none;
 }
 
@@ -28,7 +29,6 @@
 }
 
 .container .pawprint_header {
-  object-fit: contain;
   background-color: lemonchiffon;
   font-size: xx-large;
   font-family: "Patrick Hand SC", cursive;
@@ -44,7 +44,6 @@
 
 .container .nav-link {
   color: rgb(68, 107, 235);
-  font-size: 18px;
-  font-family: Bradley Hand, cursive, bold
-
+  font-size: 26px;
+  font-family: Patrick Hand SC, cursive;
 }

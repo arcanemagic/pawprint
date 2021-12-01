@@ -6,10 +6,10 @@ import Axios from 'axios'
 class Update extends React.Component {
   changeMap(num) {
     if (localStorage.getItem("loggedIn") === "false"){
-      alert("please log in to update the location!")
+      alert("Please log in to update the location!")
     }
     else{
-      alert("you have updated the location");
+      alert("You have updated the location");
       Axios.post("https://bruin-pawprint.herokuapp.com/updateBuilding", {
         number : num
       }).then(() =>{
@@ -17,7 +17,7 @@ class Update extends React.Component {
       }).then((response) => {
         console.log(response);
       });
-      console.log("you have updated the location "+num);
+      console.log("You have updated the location "+num);
     }
   }
 

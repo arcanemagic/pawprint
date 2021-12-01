@@ -10,7 +10,7 @@ function ImgUpload() {
   const upload = () =>{
     if (localStorage.getItem("loggedIn") == "false"){
       console.log("here")
-      alert("please log in to post!")
+      alert("Please log in to post!")
     }
     else{
       const formData = new FormData();
@@ -28,16 +28,15 @@ function ImgUpload() {
         author: localStorage.getItem("username"),
       })
     });
-    alert("successfully posted!")
+    alert("Successfully posted!")
   };
   }
 
   return (
     <div className="ImgUpload">
     <h1>Create a Post</h1>
-      <label>Say something:</label>
       <input type="text"
-      placeholder="Title..."
+      placeholder="Title"
       onChange={(event) => {
       setTitle(event.target.value);
           }}

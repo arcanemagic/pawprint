@@ -23,7 +23,7 @@ function Search() {
         <h1>Search by User: </h1>
         <input className="inputss"
             type="text"
-            placeholder="User..."
+            placeholder="User"
             onChange= {(e) =>{setSearch(e.target.value)}}
         />
         <button onClick={search_user}>Search</button>

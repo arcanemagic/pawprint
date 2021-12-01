@@ -40,14 +40,14 @@ function Post() {
 
   const likePost = (id, key) => {
     if (localStorage.getItem("loggedIn") === "false"){
-      alert("please log in to like!")
+      alert("Please log in to like!")
     }
     else if (likes.includes(id)){
       Axios.post("https://bruin-pawprint.herokuapp.com/unlike", {
         user_id: user,
         post_id: id,
       }).then((response) => {
-        alert("you have unliked this post")
+        alert("You have unliked this post")
       });
     }
     else{
@@ -58,7 +58,7 @@ function Post() {
         post_id: id,
       }).then((response) => {
         setUploads(tempLikes);
-        alert("you have liked this post")
+        alert("You have liked this post")
       });
     }
     
@@ -87,7 +87,7 @@ function Post() {
               { !likes.includes(val.id) ? (
                 <Icon symbol={nolikes} altName="nolikes icon" />
               ) : (
-                <Icon symbol = {like} altName = "likes icon"/>
+                <Icon symbol = {like} altName="likes icon"/>
               )}
               {val.num_like} likes </div>
             </div>

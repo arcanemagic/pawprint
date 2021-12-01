@@ -20,7 +20,7 @@ function Login() {
       if (response.data.loggedIn) {
         localStorage.setItem("loggedIn", true);
         localStorage.setItem("username", response.data.username);
-        alert("successful logged in!")
+        alert("Successful logged in!")
         //history.push("/");
       } else {
         setErrorMessage(response.data.message);
@@ -35,14 +35,14 @@ function Login() {
       <div className="LoginForm">
         <input
           type="text"
-          placeholder="Username..."
+          placeholder="Username"
           onChange={(event) => {
             setUsername(event.target.value);
           }}
         />
         <input
           type="password"
-          placeholder="Password..."
+          placeholder="Password"
           onChange={(event) => {
             setPasswd(event.target.value);
           }}

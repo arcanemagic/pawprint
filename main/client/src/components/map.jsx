@@ -99,12 +99,13 @@ const Map = () =>{
   })()
   
   return(
-      <div>
-      <div className= "powell">
-        <span>Powell Cat was last seen at:</span>
-        <div>{locArr[image - 1]}</div>
+      <div className="update">
+        <div className="powell">
+          <span>Powell Cat was last seen at:</span>
+          <div>{locArr[image - 1]}</div>
         </div>
         <a href={urlArr[image - 1]} className="Take">Take me to Powell Cat</a>
+        <br />
         <img
           style={{ maxWidth: "1000px" }}
           src={imagesPath[image - 1]}

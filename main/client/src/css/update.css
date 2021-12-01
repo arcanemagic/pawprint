@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .update {
   text-align: center;
   background-color: white;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .mapicons {
