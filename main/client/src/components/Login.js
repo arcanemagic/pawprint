@@ -30,7 +30,7 @@ function Login() {
 
   return (
     <div className="Login">
-      <h1 className="registe">Login</h1>
+      <h1 className="register">Login</h1>
       <div className="information">
       <div className="LoginForm">
         <input
