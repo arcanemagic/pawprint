@@ -20,7 +20,7 @@ function Icon(props) {
   
   
     useEffect(() => {
-      Axios.get("https://bruin-pawprint.herokuapp.com/byTrending").then((response) => {
+      Axios.get("http://localhost:8000/byTrending").then((response) => {
           setTrends(response.data);
       });
     }, []);

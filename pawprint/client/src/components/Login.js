@@ -16,7 +16,7 @@ function Login() {
     if(localStorage.getItem("loggedIn") === "true"){
       alert("Can not login again")
     }else{
-    Axios.post("https://bruin-pawprint.herokuapp.com/login", {
+    Axios.post("http://localhost:8000/login", {
       username: username,
       passwd: passwd,
     }).then((response) => {

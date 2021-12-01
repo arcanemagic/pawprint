@@ -10,7 +10,7 @@ class Update extends React.Component {
     }
     else{
       alert("you have updated the location");
-      Axios.post("https://bruin-pawprint.herokuapp.com/updateBuilding", {
+      Axios.post("http://localhost:8000/updateBuilding", {
         number : num
       }).then(() =>{
         console.log("success");

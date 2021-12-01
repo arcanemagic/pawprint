@@ -1,11 +1,14 @@
 import React, { useState}  from "react";
 import Axios from "axios";
 import "../css/Image.css";
+import { useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 
 function ImgUpload() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState([]);
+
+  let nav = useNavigate();
 
   const upload = () =>{
     if (localStorage.getItem("loggedIn") === "false"){
@@ -22,13 +25,15 @@ function ImgUpload() {
     
       const fileName = response.data.public_id;
       console.log(fileName)
-      Axios.post("https://bruin-pawprint.herokuapp.com/post",{
+      Axios.post("http://localhost:8000/post",{
         title: title,
         image:fileName,
         author: localStorage.getItem("username"),
       })
     });
     alert("successfully posted!")
+    nav('/post')
+    window.location.reload(false);
   };
   }
 

@@ -25,13 +25,13 @@ function Post() {
   }, []);
 
   useEffect(() => {
-    Axios.get("https://bruin-pawprint.herokuapp.com/social").then((response) => {
+    Axios.get("http://localhost:8000/social").then((response) => {
       setUploads(response.data);
     });
   }, []);
 
   useEffect(() => {
-    Axios.get("https://bruin-pawprint.herokuapp.com/liked", {
+    Axios.get("http://localhost:8000/liked", {
       params: {
         user : user,
       }
@@ -43,11 +43,10 @@ function Post() {
   const likePost = (id, key) => {
     if (localStorage.getItem("loggedIn") === "false"){
       alert("please log in to like!")
-    }
-    else if (likes.includes(id)){
+    } else if (likes.includes(id)){
       var dislikes = uploads;
       dislikes[key].num_like = dislikes[key].num_like - 1;
-      Axios.post("https://bruin-pawprint.herokuapp.com/unlike", {
+      Axios.post("http://localhost:8000/unlike", {
         user_id: user,
         post_id: id,
       }).then((response) => {
@@ -60,7 +59,7 @@ function Post() {
     else{
       var tempLikes = uploads;
       tempLikes[key].num_like = tempLikes[key].num_like + 1;
-      Axios.post("https://bruin-pawprint.herokuapp.com/like", {
+      Axios.post("http://localhost:8000/like", {
         user_id: localStorage.getItem("username"),
         post_id: id,
       }).then((response) => {
@@ -98,15 +97,15 @@ function Post() {
             </div>
             <div className="icons">
               <div className="likes">
-                { !likes.includes(val.id) ? (
-                  <img className="icon" src={nolikes} alt={"nolikes icon"} onClick={() => {
-                    likePost(val.id, index);
-                  }}/>
-                  ) : (
+                { likes.includes(val.id) ? (
                   <img className="icon" src={like} alt={"likes icon"} onClick={() => {
                     likePost(val.id, index);
                   }}/>
-                )}
+                ): (
+                  <img className="icon" src={nolikes} alt={"nolikes icon"} onClick={() => {
+                    likePost(val.id, index);
+                  }}/>
+                  )}
               &nbsp;{val.num_like} likes </div>
               <div className="user_caption">
                 {" "}

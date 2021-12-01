@@ -23,19 +23,19 @@ function Profile() {
   })
 
   useEffect(() => {
-    Axios.get(`https://bruin-pawprint.herokuapp.com/byUser/${localStorage.getItem("username")}`).then((response) => {
+    Axios.get(`http://localhost:8000/byUser/${localStorage.getItem("username")}`).then((response) => {
         setYouruploads(response.data);
     });
   }, []);
 
   const delete_post1 = (id,key) => {
     console.log("is here in id?"+ id)
-    Axios.post('https://bruin-pawprint.herokuapp.com/delete', {
+    Axios.post('http://localhost:8000/delete', {
       id:id,
       username:localStorage.getItem("username")
     })
     .then((response)=>{
-      alert("Sucessfully delete!");
+      alert("Sucessfully deleted!");
       setYouruploads(response.data);
     })
   }

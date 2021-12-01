@@ -6,11 +6,16 @@ app.use(cors());
 app.use(express.json());
 const mysql = require('mysql');
 
+// host: 'us-cdbr-east-04.cleardb.com',
+//     user: 'badeb00fe5be21',
+//     password: 'e0d840f6',
+//     database: 'heroku_ed6443bb67dd7cb'
+
 const db = mysql.createPool({
-    host: 'us-cdbr-east-04.cleardb.com',
-    user: 'badeb00fe5be21',
-    password: 'e0d840f6',
-    database: 'heroku_ed6443bb67dd7cb'
+    host: 'localhost',
+    user: 'newuser',
+    password: '1234',
+    database: 'userDB'
 });
 
 app.post("/create", (req, res) => {
@@ -104,6 +109,7 @@ app.post("/post",(req,res) =>{
     const author = req.body.author;
     db.query(
         "INSERT INTO posts (title, image, user_id, num_like) VALUES (?,?,?,0)",
+        console.log('posted')
         [title, image, author],
         (err, result) =>{
             if(err){
@@ -167,16 +173,17 @@ app.post("/like", (req,res) =>{
           }
       
   })
-  var ret = [];
+  const ret = [];
   db.query(
       "SELECT post_id FROM Likes WHERE user_id = ?", user_id, (err, results) => {
           if (err){
               console.log(err);
           }
           else{
-              for (var i of results) 
+              for (const i of results) 
                   ret.push(i.post_id);
               ret.push(post_id)
+              console.log("like: "+ ret)
               res.send(ret)
           }
       }
@@ -211,6 +218,7 @@ app.post("/unlike", (req,res) =>{
                     ret.push(i.post_id);
                   }
               }
+              console.log("unlike: "+ ret)
               res.send(ret)
           }
       }

@@ -61,15 +61,23 @@ const NavMenu = styled.div`
     }
 `;
 
-const NavMenuLinks = styled(Link)`
+const NavMenuLinks = styled.a`
     ${NavLink}
 `;
 
 const Navbar = ({toggle}) => {
+
+    const state = localStorage.getItem("loggedIn") === "true";
+
     const logout = () =>{
-        localStorage.setItem("loggedIn", false);
-        localStorage.removeItem("username");
-        alert("Successfully logged out!")
+        if(localStorage.getItem("loggedIn") === "true"){
+            localStorage.setItem("loggedIn", "false");
+            localStorage.removeItem("username");
+            alert("successfully logged out!")
+            window.location.reload(false);
+          }else{
+            alert("You are not logged in yet")
+          }
     }
 
     return (
@@ -77,12 +85,22 @@ const Navbar = ({toggle}) => {
             <Logo to='/'><img src={HeaderLogo} />PawPrint</Logo>
             <MenuBars onClick={toggle} />
             <NavMenu>
-                <NavMenuLinks to='/'>Home</NavMenuLinks>
-                <NavMenuLinks to='/post'>PawPrinsta</NavMenuLinks>
-                <NavMenuLinks to='/register'>Register</NavMenuLinks>
-                <NavMenuLinks to='/login'>Login</NavMenuLinks>
-                <NavMenuLinks to='/' onClick={logout}>Logout</NavMenuLinks>
-                <NavMenuLinks to='/profile'>Profile</NavMenuLinks>
+                <NavMenuLinks href='/'>Home</NavMenuLinks>
+                <NavMenuLinks href='/post'>PawPrinsta</NavMenuLinks>
+                { state ? 
+                   (<>
+                      <NavMenuLinks href='/profile'>Profile</NavMenuLinks>
+                      <NavMenuLinks onClick={logout} href= '/' >Logout</NavMenuLinks>
+                    </>
+                   ) 
+                   :
+                   (<> 
+                     <NavMenuLinks href='/register'>Register</NavMenuLinks>
+                     <NavMenuLinks href='/login'>Login</NavMenuLinks>
+                    </>
+                   )
+                }
+                
             </NavMenu>
         </Nav>
     );
