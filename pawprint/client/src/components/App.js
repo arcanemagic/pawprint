@@ -1,6 +1,7 @@
 import "../css/App.css";
 import { useState } from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [name, setName] = useState("");
@@ -9,7 +10,9 @@ function App() {
   const [email, setEmail] = useState("");
   const [uid, setUid] = useState(0);
   const [message, setMessage]= useState("");
+  let nav = useNavigate();
   const register = () => {
+    
     Axios.post("http://localhost:8000/create", {
       name: name,
       username: username,
@@ -19,7 +22,8 @@ function App() {
     }).then((response)=>{
       console.log("does it passed?")
       if(response.data.regStatus){
-        setMessage("Successful register!")
+        alert("Successful register!")
+        nav("/login");
       }else{
         setMessage(response.data.message)
       }

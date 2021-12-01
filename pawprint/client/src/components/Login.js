@@ -9,7 +9,7 @@ function Login() {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  let history = useNavigate();
+  let nav = useNavigate();
 
   const login = () => {
     if(localStorage.getItem("loggedIn") === "true"){
@@ -24,7 +24,8 @@ function Login() {
         localStorage.setItem("loggedIn", true);
         localStorage.setItem("username", response.data.username);
         alert("successful logged in!")
-        //history.push("/");
+        window.location.reload(false);
+        nav("/");
       } else {
         setErrorMessage(response.data.message);
       }

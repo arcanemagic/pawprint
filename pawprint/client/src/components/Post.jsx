@@ -6,9 +6,9 @@ import like from "../images/social/powell_cat_likes.png";
 import Axios from 'axios';
 import { Image } from "cloudinary-react";
 
-function Icon(props) {
-  return <img className="icon" src={props.symbol} alt={props.altName} />;
-}
+// function Icon(props) {
+//   return <img className="icon" src={props.symbol} alt={props.altName} />;
+// }
 
 function Post() {
   const [uploads, setUploads] = useState([]);
@@ -83,15 +83,17 @@ function Post() {
             <div className="post_image">
               <Image cloudName="bruin-pawprint" publicId={val.image} />
             </div>
-            <div className="icons"
-                onClick={() => {
-                  likePost(val.id, key);
-                }}>
+            <div className="icons">
               <div className="likes"> 
+              
               { !likes.includes(val.id) ? (
-                <Icon symbol={nolikes} altName="nolikes icon" />
+                <img className="icon" src={nolikes} alt={"nolikes icon"} onClick={() => {
+                  likePost(val.id, key);
+                }}/>
               ) : (
-                <Icon symbol = {like} altName = "likes icon"/>
+                <img className="icon" src={like} alt={"likes icon"} onClick={() => {
+                  likePost(val.id, key);
+                }}/>
               )}
               {val.num_like} likes </div>
               <div className="user_caption">

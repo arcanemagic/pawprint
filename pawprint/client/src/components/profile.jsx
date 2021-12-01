@@ -47,7 +47,6 @@ function Profile() {
   return (
     <div>
        <div>
-       <h2 className="pp">Profile page: </h2>
       <h1 className="Name">{name}</h1>
       {yourUploads.map((val, key) => {
         return (

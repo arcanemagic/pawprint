@@ -11,6 +11,7 @@ function Navigation() {
       localStorage.setItem("loggedIn", "false");
       localStorage.removeItem("username");
       alert("successfully logged out!")
+      window.location.reload(false);
     }else{
       alert("You are not logged in yet!!!")
     }
@@ -76,10 +77,12 @@ function Navigation() {
             </ul>
           </div>
           <div className="profile">
-            <p>{"Profile"}{localStorage.getItem("username")}</p>
-                <NavLink className="nav-link" to='/profile'>
+            {
+              localStorage.getItem("loggedIn") === "true" ? ( <><p>{localStorage.getItem("username")}</p><NavLink className="nav-link" to='/profile'>
                 <a href="" className="profile_logo"><img className="profile_logo" src={profile_logo} /></a>
-              </NavLink>
+              </NavLink></>) : (<></>)
+            }
+           
           </div> 
           </div>
       </nav>
