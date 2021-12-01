@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 .ImgUpload{
-    width: 100%;
+    width: 300px;
     height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: mintcream;
+    background-color: white;
     font-family: 'Permanent Marker', cursive;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 5px lightgray;
+    margin-left: 470px;
+    margin-top: 47px;
 }
 
 .ImgUpload label{
