@@ -2,13 +2,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../css/nav.css";
 import logo from "../images/pawprint_logo.png";
-import profile_logo from "/Users/yukilin/Desktop/login_register_files copy 2/client/src/images/social/profile_img.jpg"
+import profile_logo from "../images/social/profile_img.jpg"
 
 function Navigation() {
   const logout = () =>{
+    if(localStorage.getItem("loggedIn" === "true")){
     localStorage.setItem("loggedIn", false);
     localStorage.removeItem("username");
     alert("successfully logged out!")
+    }else{
+      alert("You are not logged in yet!!!")
+    }
   }
   return (
     <div className="navigation">
