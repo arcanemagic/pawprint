@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 
 
@@ -46,7 +45,7 @@ const DropdownMenu = styled.div`
     }
 `;
 
-const DropdownLinks = styled(Link)`
+const DropdownLinks = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,6 +63,20 @@ const DropdownLinks = styled(Link)`
 `;
 
 const Dropdown = ({isOpen, toggle}) => {
+
+    const state = localStorage.getItem("loggedIn") === "true";
+
+    const logout = () => {
+        if(localStorage.getItem("loggedIn") === "true"){
+            localStorage.setItem("loggedIn", "false");
+            localStorage.removeItem("username");
+            alert("successfully logged out!")
+            window.location.reload(false);
+          }else{
+            alert("You are not logged in yet")
+          }
+    };
+
     return (
         <DropdownContainer isOpen={isOpen} onClick={toggle}>
             <Icon onClick={toggle}>
@@ -71,12 +84,21 @@ const Dropdown = ({isOpen, toggle}) => {
             </Icon>
             <DropdownWrapper>
                 <DropdownMenu>
-                    <DropdownLinks to='/'>Home</DropdownLinks>
-                    <DropdownLinks to='/post'>PawPrinsta</DropdownLinks>
-                    <DropdownLinks to='/register'>Register</DropdownLinks>
-                    <DropdownLinks to='/login'>Login</DropdownLinks>
-                    <DropdownLinks to='/'>Logout</DropdownLinks>
-                    <DropdownLinks to='/profile'>Profile</DropdownLinks>
+                    <DropdownLinks href='/'>Home</DropdownLinks>
+                    <DropdownLinks href='/post'>PawPrinsta</DropdownLinks>
+                    { state ? 
+                   (<>
+                      <DropdownLinks href='/profile'>Profile</DropdownLinks>
+                      <DropdownLinks onClick={logout} href= '/' >Logout</DropdownLinks>
+                    </>
+                   ) 
+                   :
+                   (<> 
+                     <DropdownLinks href='/register'>Register</DropdownLinks>
+                     <DropdownLinks href='/login'>Login</DropdownLinks>
+                    </>
+                   )
+                }
                 </DropdownMenu>
             </DropdownWrapper>
         </DropdownContainer>
