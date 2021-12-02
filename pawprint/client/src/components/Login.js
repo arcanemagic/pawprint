@@ -25,8 +25,8 @@ function Login() {
         localStorage.setItem("loggedIn", true);
         localStorage.setItem("username", response.data.username);
         alert("successful logged in!")
-        window.location.reload(false);
         nav("/");
+        window.location.reload(false);
       } else {
         setErrorMessage(response.data.message);
       }
