@@ -31,9 +31,7 @@ function ImgUpload() {
         author: localStorage.getItem("username"),
       })
     });
-    alert("successfully posted!")
-    nav('/post')
-    window.location.reload(false);
+    alert("successfully posted!");
   };
   }
 
