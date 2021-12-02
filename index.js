@@ -84,7 +84,6 @@ app.post('/updateBuilding', (req, res) => {
         const building = req.body.number;
         db.query("INSERT INTO picid(building) VALUES (?)",[building], (err, res) => {
             if (err) throw (err);
-            console.log("updated");
         })
     })
 })
@@ -96,7 +95,6 @@ app.get('/building', (req, result) => {
         db.query("select building from picid where id=(SELECT MAX(id) from picid)", (err, res, fields) => {
                 if (err) throw (err);
                 num = res[0].building;
-                console.log(num);
                 result.send({number:num});
             })
     }) 
@@ -111,6 +109,7 @@ app.post("/post",(req,res) =>{
         "INSERT INTO posts (title, image, user_id, num_like) VALUES (?,?,?,0)",
         [title, image, author],
         (err, result) =>{
+          console.log("inserted")
             if(err){
                 res.send({err:err});
             }
@@ -138,7 +137,6 @@ app.get("/liked", (req,res) =>{
           else{
               for (var i of results) 
                   ret.push(i.post_id);
-              console.log(ret)
               res.send(ret)
           }
       }
@@ -155,7 +153,6 @@ app.post("/like", (req,res) =>{
               console.log(err);
 
           }else if (results.length === 0){
-              console.log("inserted "+user_id + " "+post_id)
               db.query("INSERT INTO Likes(user_id, post_id) VALUES(?,?)",
               [user_id, post_id],
               (err, result) =>{
@@ -182,7 +179,6 @@ app.post("/like", (req,res) =>{
               for (const i of results) 
                   ret.push(i.post_id);
               ret.push(post_id)
-              console.log("like: "+ ret)
               res.send(ret)
           }
       }
@@ -227,7 +223,6 @@ app.post("/unlike", (req,res) =>{
 
 
 app.get("/byUser/:username", (req, res) => {
-    console.log("is here?")
     const userName = req.params.username;
     db.query(
       "SELECT * FROM posts WHERE user_id = ?;",
@@ -242,7 +237,6 @@ app.get("/byUser/:username", (req, res) => {
   });
 
   app.get("/byTrending", (req, res) => {
-    console.log("is here???")
     db.query(
       "SELECT * FROM posts ORDER BY num_like DESC LIMIT 5;",
       (err, results) => {
@@ -272,7 +266,6 @@ app.get("/byUser/:username", (req, res) => {
   app.post("/delete", (req,res)=>{
     const id = req.body.id;
     const username = req.body.username;
-    console.log("does delete?")
     db.query("DELETE FROM posts WHERE id = ?;",
     id,
     (err, result)=>{
@@ -299,4 +292,3 @@ app.get("/byUser/:username", (req, res) => {
 app.listen(process.env.PORT || 8000, ()=>{
     console.log("Yey, your server is running in 8000")
 });
-
