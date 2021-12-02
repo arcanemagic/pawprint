@@ -29,37 +29,37 @@ Alternatively, the app can also be viewed at https://bruin-pawprint.netlify.app
 
 ### Home page
 
-![Home](/client/src/images/screenshots/home.png) <br />
+![Home](client/src/images/screenshots/home.png) <br />
 
 ### Update page
 
-![Update](/client/src/images/screenshots/update.png) <br />
+![Update](client/src/images/screenshots/update.png) <br />
 
 ### Posts
 
-![Posts](/client/src/images/screenshots/chrono.png) <br />
-![Posts2](/client/src/images/screenshots/posts.png) <br />
+![Posts](client/src/images/screenshots/chrono.png) <br />
+![Posts2](client/src/images/screenshots/posts.png) <br />
 
 ### Search page
 
-![Search](/client/src/images/screenshots/search.png) <br />
+![Search](client/src/images/screenshots/search.png) <br />
 
 ### Upload page
 
-![Upload](/client/src/images/screenshots/create.png) <br />
+![Upload](client/src/images/screenshots/create.png) <br />
 
 ### Login page
 
-![Login](/client/src/images/screenshots/login.png) <br />
+![Login](client/src/images/screenshots/login.png) <br />
 
 ### Register page
 
-![Register](/client/src/images/screenshots/register.png) <br />
+![Register](client/src/images/screenshots/register.png) <br />
 
 ### The site is fully responsive
 
-![Responsive](/client/src/images/screenshots/responsive.png) <br />
+![Responsive](client/src/images/screenshots/responsive.png) <br />
 
 ### Dropdown menu for smaller screens
 
-![Responsive 2](/client/src/images/screenshots/responsive2.png)
+![Responsive 2](client/src/images/screenshots/responsive2.png)
