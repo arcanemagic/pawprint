@@ -6,58 +6,50 @@ app.use(cors());
 app.use(express.json());
 const mysql = require('mysql');
 
-var db_config = {
-  host: 'us-cdbr-east-04.cleardb.com',
-    user: 'badeb00fe5be21',
-    password: 'e0d840f6',
-    database: 'heroku_ed6443bb67dd7cb'
-};
+// host: 'us-cdbr-east-04.cleardb.com',
+//     user: 'badeb00fe5be21',
+//     password: 'e0d840f6',
+//     database: 'heroku_ed6443bb67dd7cb'
 
-
-// mysql://badeb00fe5be21:e0d840f6@us-cdbr-east-04.cleardb.com/heroku_ed6443bb67dd7cb?reconnect=true
-
-const db = mysql.createPool(db_config);
-
-var connection;
-
-function handleDisconnect() {
-  connection = mysql.createConnection(db_config); // Recreate the connection, sincethe old one cannot be reused.
-
-  connection.connect(function(err) {              // The server is either down
-    if(err) {                                     // or restarting (takes a while sometimes).
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-    }                                     // to avoid a hot loop, and to allow our node script to
-  });                                     // process asynchronous requests in the meantime.
-                                          // If you're also serving http, display a 503 error.
-  connection.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-      console.log("FUCKER DISCONNECTED AGAIN") // Connection to the MySQL server is usually
-      handleDisconnect();                         // lost due to either server restart, or a
-    } else {                                      // connnection idle timeout (the wait_timeout
-      throw err;                                  // server variable configures this)
-    }
-  });
-}
-
-handleDisconnect();
+const db = mysql.createPool({
+    host: 'localhost',
+    user: 'newuser',
+    password: '1234',
+    database: 'userDB'
+});
 
 app.post("/create", (req, res) => {
-    const name = req.body.name;
-    const username = req.body.username;
-    const passwd = req.body.passwd;
-    const email = req.body.email;
-    const uid = req.body.uid;
-    db.query(
-        "INSERT INTO Users (name, username, passwd, email ,uid) VALUES (?,?,?,?,?)", 
-        [name, username, passwd, email ,uid], 
-      (err, results) => {
-        console.log(err);
-        res.send(results);
-      }
-    );
-  });
+  const name = req.body.name;
+  const username = req.body.username;
+  const passwd = req.body.passwd;
+  const email = req.body.email;
+  const uid = req.body.uid;
+  db.query("SELECT * FROM Users WHERE username = ?",
+  username,
+  (err1, result1)=>{
+    if(err1){
+      console.log(err1);
+    }
+    if(result1.length === 0){
+      db.query(
+      "INSERT INTO Users (name, username, passwd, email ,uid) VALUES (?,?,?,?,?)",
+      [name, username, passwd, email ,uid],
+    (err2, results2) => {
+      console.log(err2);
+      res.json({
+        regStatus: true,
+        message: "Successfully register!"})
+    }
+  );
+    }else{
+      res.json({
+        regStatus: false,
+        message: "Username already taken!"})
+    }
+  })
+ 
+});
+
   
   app.post("/login", (req, res) => {
     const username = req.body.username;
@@ -117,6 +109,7 @@ app.post("/post",(req,res) =>{
     const author = req.body.author;
     db.query(
         "INSERT INTO posts (title, image, user_id, num_like) VALUES (?,?,?,0)",
+        console.log('posted')
         [title, image, author],
         (err, result) =>{
             if(err){
@@ -143,12 +136,12 @@ app.get("/liked", (req,res) =>{
           if (err){
               console.log(err);
           }
-          else if (results.length > 0){
+          else{
               for (var i of results) 
                   ret.push(i.post_id);
               console.log(ret)
+              res.send(ret)
           }
-          res.send(ret)
       }
   )
 })
@@ -161,6 +154,7 @@ app.post("/like", (req,res) =>{
       "SELECT * FROM Likes WHERE user_id = ? and post_id = ?", [user_id, post_id], (err, results) => {
           if (err){
               console.log(err);
+
           }else if (results.length === 0){
               console.log("inserted "+user_id + " "+post_id)
               db.query("INSERT INTO Likes(user_id, post_id) VALUES(?,?)",
@@ -172,13 +166,28 @@ app.post("/like", (req,res) =>{
                   db.query("UPDATE posts SET num_like = num_like+1 where id = ?",
                   post_id,
                   (err2,res2)=>{
-                      res.send(result);
+                      // res.send(result);
                   }
                   )
               })
           }
       
   })
+  const ret = [];
+  db.query(
+      "SELECT post_id FROM Likes WHERE user_id = ?", user_id, (err, results) => {
+          if (err){
+              console.log(err);
+          }
+          else{
+              for (const i of results) 
+                  ret.push(i.post_id);
+              ret.push(post_id)
+              console.log("like: "+ ret)
+              res.send(ret)
+          }
+      }
+  )
 })
 
 app.post("/unlike", (req,res) =>{
@@ -194,10 +203,26 @@ app.post("/unlike", (req,res) =>{
       db.query("UPDATE posts SET num_like = num_like-1 where id = ?",
            post_id,
            (err2,res2)=>{
-               res.send(result);
            }
            )
   })
+  var ret = [];
+  db.query(
+      "SELECT post_id FROM Likes WHERE user_id = ?", user_id, (err, results) => {
+          if (err){
+              console.log(err);
+          }
+          else{
+              for (var i of results) {
+                  if (i.post_id!==post_id){
+                    ret.push(i.post_id);
+                  }
+              }
+              console.log("unlike: "+ ret)
+              res.send(ret)
+          }
+      }
+  )
 })
 
 
@@ -245,6 +270,34 @@ app.get("/byUser/:username", (req, res) => {
     );
   });
   
+  app.post("/delete", (req,res)=>{
+    const id = req.body.id;
+    const username = req.body.username;
+    console.log("does delete?")
+    db.query("DELETE FROM posts WHERE id = ?;",
+    id,
+    (err, result)=>{
+      if(err){
+        console.log(err)
+      }
+      if(result){
+        db.query("SELECT * FROM posts WHERE user_id = ?;",
+        username,
+        (err1,result1)=>{
+          if(err1){
+            console.log(err1)
+          }
+          if(result1){
+            res.send(result1)
+          }
+        }
+        )
+      }
+    }
+    )
+  })
 
-app.listen(process.env.PORT || 3000);
+app.listen(8000, ()=>{
+    console.log("Yey, your server is running in 8000")
+});
 
