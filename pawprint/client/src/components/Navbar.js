@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import Bars from '../images/bars.svg';
@@ -12,6 +12,7 @@ const Nav = styled.nav`
     z-index: 100;
     position: fixed;
     width: 100%;
+    background: ${props => props.navscroll ? "linear-gradient(90deg, rgb(168, 103, 39) 0%, rgb(207,137,68) 100%)" : "transparent"};
 `;
 
 const NavLink = css`
@@ -68,8 +69,9 @@ const NavMenuLinks = styled.a`
 const Navbar = ({toggle}) => {
 
     const state = localStorage.getItem("loggedIn") === "true";
+    const [navbar, setNavbar] = useState(false);
 
-    const logout = () =>{
+    const logout = () => {
         if(localStorage.getItem("loggedIn") === "true"){
             localStorage.setItem("loggedIn", "false");
             localStorage.removeItem("username");
@@ -78,10 +80,20 @@ const Navbar = ({toggle}) => {
           }else{
             alert("You are not logged in yet")
           }
-    }
+    };
+
+    const changeBackground = () => {
+        if (window.scrollY >= 20) {
+            setNavbar(true);
+        } else {
+            setNavbar(false);
+        }
+    };
+
+    window.addEventListener('scroll', changeBackground);
 
     return (
-        <Nav>
+        <Nav navscroll={navbar}>
             <Logo to='/'><img src={HeaderLogo} />PawPrint</Logo>
             <MenuBars onClick={toggle} />
             <NavMenu>
@@ -100,7 +112,6 @@ const Navbar = ({toggle}) => {
                     </>
                    )
                 }
-                
             </NavMenu>
         </Nav>
     );

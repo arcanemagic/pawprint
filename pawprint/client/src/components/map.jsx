@@ -89,7 +89,7 @@ const Map = () =>{
   const [image, setImage]= useState(0);
 
   useEffect(() => {
-    Axios.get("http://localhost:8000/building").then((response) => {
+    Axios.get("https://bruin-pawprint.herokuapp.com/building").then((response) => {
       setImage(response.data.number);
     });
   }, []);

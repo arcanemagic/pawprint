@@ -25,13 +25,13 @@ function Post() {
   }, []);
 
   useEffect(() => {
-    Axios.get("http://localhost:8000/social").then((response) => {
+    Axios.get("https://bruin-pawprint.herokuapp.com/social").then((response) => {
       setUploads(response.data);
     });
   }, []);
 
   useEffect(() => {
-    Axios.get("http://localhost:8000/liked", {
+    Axios.get("https://bruin-pawprint.herokuapp.com/liked", {
       params: {
         user : user,
       }
@@ -46,7 +46,7 @@ function Post() {
     } else if (likes.includes(id)){
       var dislikes = uploads;
       dislikes[key].num_like = dislikes[key].num_like - 1;
-      Axios.post("http://localhost:8000/unlike", {
+      Axios.post("https://bruin-pawprint.herokuapp.com/unlike", {
         user_id: user,
         post_id: id,
       }).then((response) => {
@@ -59,7 +59,7 @@ function Post() {
     else{
       var tempLikes = uploads;
       tempLikes[key].num_like = tempLikes[key].num_like + 1;
-      Axios.post("http://localhost:8000/like", {
+      Axios.post("https://bruin-pawprint.herokuapp.com/like", {
         user_id: localStorage.getItem("username"),
         post_id: id,
       }).then((response) => {
@@ -80,6 +80,9 @@ function Post() {
         </Button>
         <Button primary="true" href="/trending">
           Sort by trending
+        </Button>
+        <Button primary="true" href="/search">
+          Search by User
         </Button>
       </div>
       {uploads.map((val, index) => {

@@ -20,7 +20,7 @@ function Icon(props) {
   
   
     useEffect(() => {
-      Axios.get("http://localhost:8000/byTrending").then((response) => {
+      Axios.get("https://bruin-pawprint.herokuapp.com/byTrending").then((response) => {
           setTrends(response.data);
       });
     }, []);
@@ -34,6 +34,9 @@ function Icon(props) {
           </Button>
           <Button primary="true" href="/post">
             Sort chronologically
+          </Button>
+          <Button primary="true" href="/search">
+            Search by User
           </Button>
         </div>
         {trends.map((val, key) => {

@@ -4,6 +4,7 @@ import nolikes from "../images/social/powell_cat_nolikes.png";
 import likes from "../images/social/powell_cat_likes.png";
 import Axios from 'axios';
 import { Image } from "cloudinary-react";
+import { Button } from "./Button";
 
 function Icon(props) {
   return <img className="icon" src={props.symbol} alt={props.altName} />;
@@ -23,14 +24,14 @@ function Profile() {
   })
 
   useEffect(() => {
-    Axios.get(`http://localhost:8000/byUser/${localStorage.getItem("username")}`).then((response) => {
+    Axios.get(`https://bruin-pawprint.herokuapp.com/byUser/${localStorage.getItem("username")}`).then((response) => {
         setYouruploads(response.data);
     });
   }, []);
 
   const delete_post1 = (id,key) => {
     console.log("is here in id?"+ id)
-    Axios.post('http://localhost:8000/delete', {
+    Axios.post('https://bruin-pawprint.herokuapp.com/delete', {
       id:id,
       username:localStorage.getItem("username")
     })
@@ -66,10 +67,10 @@ function Profile() {
               {" "}
               <strong>{val.user_id}</strong> {" "} {val.title}
             </div>
-            <div className="delete_post">
-              <button onClick={()=>{delete_post1(val.id,key)}}>
+            <div>
+              <Button onClick={()=>{delete_post1(val.id,key)}} primary="true">
                 Delete Post
-              </button>
+              </Button>
             </div>
           </div>
         );

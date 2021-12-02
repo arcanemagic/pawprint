@@ -14,7 +14,7 @@ function App() {
   let nav = useNavigate();
   const register = () => {
     
-    Axios.post("http://localhost:8000/create", {
+    Axios.post("https://bruin-pawprint.herokuapp.com/create", {
       name: name,
       username: username,
       passwd: passwd,
