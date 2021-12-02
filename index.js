@@ -109,7 +109,6 @@ app.post("/post",(req,res) =>{
     const author = req.body.author;
     db.query(
         "INSERT INTO posts (title, image, user_id, num_like) VALUES (?,?,?,0)",
-        console.log('posted')
         [title, image, author],
         (err, result) =>{
             if(err){
