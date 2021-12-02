@@ -6,16 +6,16 @@ app.use(cors());
 app.use(express.json());
 const mysql = require('mysql');
 
-// host: 'us-cdbr-east-04.cleardb.com',
-//     user: 'badeb00fe5be21',
-//     password: 'e0d840f6',
-//     database: 'heroku_ed6443bb67dd7cb'
-
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'newuser',
-    password: '1234',
-    database: 'userDB'
+    // host: 'localhost',
+    // user: 'newuser',
+    // password: '1234',
+    // database: 'userDB'
+    host: 'us-cdbr-east-04.cleardb.com',
+    user: 'badeb00fe5be21',
+    password: 'e0d840f6',
+    database: 'heroku_ed6443bb67dd7cb'
+
 });
 
 app.post("/create", (req, res) => {
@@ -297,7 +297,7 @@ app.get("/byUser/:username", (req, res) => {
     )
   })
 
-app.listen(8000, ()=>{
+app.listen(process.env.PORT || 8000, ()=>{
     console.log("Yey, your server is running in 8000")
 });
 
