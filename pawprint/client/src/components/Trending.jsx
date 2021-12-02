@@ -33,7 +33,7 @@ function Icon(props) {
             <PlusIcon />
           </Button>
           <Button primary="true" href="/post">
-            Sort chronologically
+            Sort Chronologically
           </Button>
           <Button primary="true" href="/search">
             Search by User

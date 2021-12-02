@@ -79,7 +79,7 @@ function Post() {
           <PlusIcon />
         </Button>
         <Button primary="true" href="/trending">
-          Sort by trending
+          Sort by Trending
         </Button>
         <Button primary="true" href="/search">
           Search by User
